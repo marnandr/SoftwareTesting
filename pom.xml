@@ -9,14 +9,10 @@
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>model</module>
-    <module>controller</module>
-    <module>util</module>
-    <module>persist-mysql</module>
-    <module>persist</module>
     <module>service</module>
-    <module>service-impl</module>
     <module>web</module>
+    <module>core</module>
+    <module>dao</module>
   </modules>
   <name>SoftwareTestingProject</name>
   <url>https://github.com/marnandr/SoftwareTestingProject/</url>
@@ -35,13 +31,18 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/log4j/log4j -->
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>3.2.2</version>
+      <type>maven-plugin</type>
+    </dependency>
   </dependencies>
 
   <build>

@@ -7,12 +7,14 @@
         <groupId>hu.uni.miskolc.iit</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>web</artifactId>
     <packaging>war</packaging>
 
     <name>web Maven Webapp</name>
+
     <url>https://github.com/marnandr/SoftwareTestingProject</url>
 
     <properties>
@@ -23,17 +25,12 @@
 
     <dependencies>
         <dependency>
-            <artifactId>controller</artifactId>
+            <artifactId>service</artifactId>
             <groupId>hu.uni.miskolc.iit</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <artifactId>service-impl</artifactId>
-            <groupId>hu.uni.miskolc.iit</groupId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <artifactId>persist-mysql</artifactId>
+            <artifactId>dao</artifactId>
             <groupId>hu.uni.miskolc.iit</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

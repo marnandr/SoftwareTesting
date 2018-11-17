@@ -1,0 +1,10 @@
+We got 8 tables:
+
+    -Formtype: Contains the types of Forms which are used for creating the Forms.
+    -Administrator: This table is used for storing the Admin user's datas.
+    -Teacher: This table is used for storing the Teacher user's datas.
+    -Student: This table is used for storing the Student user's datas.
+    -Form: This table contains the Forms.
+    -Courses: This table having the datas of the courses.
+    -Student_Request: This one is for the Student Requests.
+    -Student_Request_Complain: This table is used for the complaining about the request

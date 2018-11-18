@@ -1,3 +1,5 @@
+package hu.uni.miskolc.iit.model;
+
 public enum FormTypes{
 
     RETAKE_EXAM,

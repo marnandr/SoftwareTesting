@@ -1,6 +1,6 @@
 package hu.uni.miskolc.iit.service;
 
-import hu.uni.miskolc.iit.Course;
+import hu.uni.miskolc.iit.model.Course;
 import hu.uni.miskolc.iit.exceptions.CourseAlreadyExistException;
 import hu.uni.miskolc.iit.exceptions.CourseDoesntExist;
 import hu.uni.miskolc.iit.exceptions.ListNotFound;

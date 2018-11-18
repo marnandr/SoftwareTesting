@@ -10,21 +10,27 @@ public class Form {
     private Date date;
     private enum formState{ OPEN, CLOSED, REOPENED } //possibly more to add
     private formState currentState;
+    private FormTypes formType;
+    private History formHistory;
 
     public Form(){}
 
-    public Form(Student st, Teacher t, Course c, String txt, Date dt){
+    public Form(Student st, Teacher t, Course c, String txt, Date dt, FormTypes formType){
         student = st;
         teacher = t;
         course = c;
         text = txt;
         date = dt;
+        this.formType = formType;
         currentState = formState.OPEN;
+        //first element in the form history, always "REQUESTED" and the student is the actor
+        formHistory = new History(st, FormAction.REQUESTED);
     }
     @Override
     public String toString(){
         return "Student: "+student+" Course: "+course+" Text: "+text;
     }
+
     //region Getters and Setters
     public Date getDate() {
         return date;
@@ -62,6 +68,20 @@ public class Form {
     public void setCurrentState(formState currentState) {
         this.currentState = currentState;
     }
+    public FormTypes getFormType() {
+        return formType;
+    }
+    public void setFormType(FormTypes formType) {
+        this.formType = formType;
+    }
+    public History getHistory() {
+        return formHistory;
+    }
+    public void setHistory(History formHistory) {
+        this.formHistory = formHistory;
+    }
+
+
 //endregion
 
 }

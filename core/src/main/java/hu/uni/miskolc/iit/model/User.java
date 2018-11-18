@@ -115,5 +115,10 @@ public class User {
         }
 
     }
+
+    @Override
+    public String toString(){
+        return "First name: "+firstName+"\nLast name: "+lastName+"\nNeptun: "+neptunCode;
+    }
 }
 

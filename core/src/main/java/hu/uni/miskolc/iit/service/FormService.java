@@ -18,52 +18,52 @@ public interface FormService {
      * @param date
      * @return
      * @throws listNotFoundException
-     * @throws notExestingFieldException
+     * @throws notExistingFieldException
      */
-    public Collection<Form> listByDate(Date date) throws listNotFoundException, notExestingFieldException;
+    public Collection<Form> listByDate(Date date) throws listNotFoundException, notExistingFieldException;
 
     /**
      *  Method which list all exisiting forms with state filtering.
      * @param state
      * @return
      * @throws listNotFoundException
-     * @throws notExestingFieldException
+     * @throws notExistingFieldException
      */
-    public Collection<Form> listByState(String state) throws listNotFoundException, notExestingFieldException;
+    public Collection<Form> listByState(String state) throws listNotFoundException, notExistingFieldException;
 
     /**
      *  Method which list all exisiting forms with course filtering.
      * @param course
      * @return
      * @throws listNotFoundException
-     * @throws notExestingFieldException
+     * @throws notExistingFieldException
      */
-    public Collection<Form> listByCourse(String course) throws listNotFoundException, notExestingFieldException;
+    public Collection<Form> listByCourse(String course) throws listNotFoundException, notExistingFieldException;
 
     /**
      *  Method which list all exisiting forms with student filtering.
      * @param student
      * @return
      * @throws listNotFoundException
-     * @throws notExestingFieldException
+     * @throws notExistingFieldException
      */
-    public Collection<Form> listByStudent(String student) throws listNotFoundException, notExestingFieldException;
+    public Collection<Form> listByStudent(String student) throws listNotFoundException, notExistingFieldException;
 
     /**
      *  Method which list all exisiting forms with teacher filtering.
      * @param teacher
      * @return
      * @throws listNotFoundException
-     * @throws notExestingFieldException
+     * @throws notExistingFieldException
      */
-    public Collection<Form> listByTeacher(String teacher) throws listNotFoundException, notExestingFieldException;
+    public Collection<Form> listByTeacher(String teacher) throws listNotFoundException, notExistingFieldException;
 
     /**
      *  Method which can make decision by a teacher.
      * @param decision
-     * @throws notExestingFieldException
+     * @throws notExistingFieldException
      */
-    public void makeDecision(boolean decision) throws notExestingFieldException;
+    public void makeDecision(boolean decision) throws notExistingFieldException;
 
     /**
      *  Method which can make complain by a student.

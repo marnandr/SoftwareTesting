@@ -84,7 +84,6 @@ public class User {
         this.password = password;
     }
 
-
     public void checkNeptunCode(String neptunCode){
         if(neptunCode.length()!=6){
             throw new IllegalArgumentException("Invalid neptun code");
@@ -92,30 +91,29 @@ public class User {
     }
 
     public void checkName(String name){
-        if(name == null){
+        if(name == null || name == ""){
             throw new IllegalArgumentException("The name can't be null");
         }
     }
 
     public void checkEmail(String email){
-        if(email == null){
+        if(email == null || email == ""){
             throw new IllegalArgumentException("The email can't be null");
         }
     }
 
     public void checkPassword(String psw){
-        if(psw == null){
+        if(psw == null || psw == ""){
             throw new IllegalArgumentException("The password can't be null");
         }
     }
 
     public void checkPhoneNumber(long num){
-        /*
         long length = 1 + (long)Math.floor(Math.log10(num));
-        if(length !=11){
-            throw new IllegalArgumentException("The phone number must be 11 characters long, now it is: "+length);
+        if(length !=6){
+            throw new IllegalArgumentException("The phone number must be 6 characters long, now it is: "+length);
         }
-        */
+
     }
 }
 

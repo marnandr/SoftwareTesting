@@ -1,6 +1,6 @@
 package hu.uni.miskolc.iit.service;
 
-import hu.uni.miskolc.iit.Form;
+import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.exceptions.*;
 import java.util.Collection;
 import java.util.Date;

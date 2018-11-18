@@ -1,4 +1,4 @@
-package hu.uni.miskolc.iit;
+package hu.uni.miskolc.iit.model;
 
 public class Teacher extends User {
     private Faculty faculty;

@@ -1,6 +1,6 @@
 package hu.uni.miskolc.iit.service;
 import hu.uni.miskolc.iit.exceptions.*;
-import hu.uni.miskolc.iit.*;
+import hu.uni.miskolc.iit.model.*;
 
 public interface UserService {
     /**

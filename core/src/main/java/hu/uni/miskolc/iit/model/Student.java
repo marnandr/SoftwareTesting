@@ -1,8 +1,8 @@
-package hu.uni.miskolc.iit;
+package hu.uni.miskolc.iit.model;
 
 import java.util.Date;
 
-public class Student extends User{
+public class Student extends User {
 
     private Date startOfStudies;
     private Faculty faculty;

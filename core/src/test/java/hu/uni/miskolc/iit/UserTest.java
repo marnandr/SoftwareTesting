@@ -1,5 +1,6 @@
 package hu.uni.miskolc.iit;
 
+import hu.uni.miskolc.iit.model.User;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

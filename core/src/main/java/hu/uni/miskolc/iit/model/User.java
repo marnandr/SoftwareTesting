@@ -1,6 +1,10 @@
 package hu.uni.miskolc.iit.model;
 
 public class User {
+
+    public static class rr{
+
+    }
     private String lastName;
     private String firstName;
     private String password;

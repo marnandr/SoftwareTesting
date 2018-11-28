@@ -4,7 +4,7 @@
  * Proprietary and confidential
  * Written by armandorivas, Oct 12, 2017.
  */
-package hu.uni.miskolc.iit;
+package hu.uni.miskolc.iit.persist;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

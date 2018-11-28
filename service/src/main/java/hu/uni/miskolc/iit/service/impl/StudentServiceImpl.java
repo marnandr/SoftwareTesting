@@ -1,6 +1,6 @@
 package hu.uni.miskolc.iit.service.impl;
 
-import hu.uni.miskolc.iit.StudentServiceDao;
+import hu.uni.miskolc.iit.dao.StudentServiceDao;
 import hu.uni.miskolc.iit.model.Course;
 import hu.uni.miskolc.iit.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;

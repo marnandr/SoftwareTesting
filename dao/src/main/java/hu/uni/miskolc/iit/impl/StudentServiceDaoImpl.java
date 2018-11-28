@@ -1,6 +1,6 @@
 package hu.uni.miskolc.iit.impl;
 
-import hu.uni.miskolc.iit.AbstractJdbc;
+import hu.uni.miskolc.iit.persist.AbstractJdbc;
 import hu.uni.miskolc.iit.StudentServiceDao;
 import hu.uni.miskolc.iit.model.Course;
 
@@ -32,6 +32,8 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
         String sql = sqlStatements.getProperty("select.all.courses");
         return this.getJdbc().query(sql, new StudentCourcesMapper());
     }
+
+
 
     class StudentCourcesMapper implements RowMapper<Course> {
 

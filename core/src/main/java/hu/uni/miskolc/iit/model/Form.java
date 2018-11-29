@@ -8,10 +8,14 @@ public class Form {
     private Course course;
     private String text;
     private Date date;
-    private enum formState{ OPEN, CLOSED, REOPENED } //possibly more to add
+    public enum formState{ OPEN, CLOSED, REOPENED } //possibly more to add
     private formState currentState;
     private FormTypes formType;
     private History formHistory;
+
+    private String teacherID;
+    private String studentID;
+    private String CourseID;
 
     public Form(){}
 
@@ -80,6 +84,26 @@ public class Form {
     public void setHistory(History formHistory) {
         this.formHistory = formHistory;
     }
+    public String getTeacherID() {
+        return teacherID;
+    }
+    public void setTeacherID(String teacherID) {
+        this.teacherID = teacherID;
+    }
+    public String getStudentID() {
+        return studentID;
+    }
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
+    }
+    public String getCourseID() {
+        return CourseID;
+    }
+    public void setCourseID(String courseID) {
+        CourseID = courseID;
+    }
+
+
 
 
 //endregion

@@ -21,7 +21,7 @@ public class AdministratorServiceDaoImpl extends AbstractJdbc implements Adminis
     private Properties sqlStatements;
 
     @Override
-    public List<Request> findAllCourses() {
+    public List<Request> findAllRequest() {
         String sql = sqlStatements.getProperty("select.all.request");
         return this.getJdbc().query(sql, new AdministratorServiceDaoImpl.AdministratorRequestMapper());
     }

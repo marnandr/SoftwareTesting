@@ -58,7 +58,7 @@ public class Request{
         return request_status;
     }
 
-    public void setRequestStatus(){
+    public void setRequestStatus(String requeststatus){
         this.request_status=request_status;
     }
 
@@ -66,8 +66,8 @@ public class Request{
         return description;
     }
 
-    public void setDescription(){
-        this.description=description;
+    public void setDescription(String description){
+        this.description= this.description;
     }
 
 }

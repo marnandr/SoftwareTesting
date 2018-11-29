@@ -1,7 +1,8 @@
 package hu.uni.miskolc.iit.impl;
 
+import hu.uni.miskolc.iit.dao.StudentServiceDao;
+import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.persist.AbstractJdbc;
-import hu.uni.miskolc.iit.StudentServiceDao;
 import hu.uni.miskolc.iit.model.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,10 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
         return this.getJdbc().query(sql, new StudentCourcesMapper());
     }
 
+    @Override
+    public List<Form> findAllForms() {
+        return null;
+    }
 
 
     class StudentCourcesMapper implements RowMapper<Course> {

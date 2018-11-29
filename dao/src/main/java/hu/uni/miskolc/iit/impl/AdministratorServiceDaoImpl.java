@@ -17,16 +17,16 @@ import java.util.Properties;
 public class AdministratorServiceDaoImpl extends AbstractJdbc implements AdministratorServiceDao {
 
     @Autowired
-    @Qualifier(value = "studentServiceDao")
+    @Qualifier(value = "requestServiceDao")
     private Properties sqlStatements;
 
     @Override
     public List<Request> findAllCourses() {
         String sql = sqlStatements.getProperty("select.all.request");
-        return this.getJdbc().query(sql, new StudentServiceDaoImpl.StudentCourcesMapper());
+        return this.getJdbc().query(sql, new AdministratorServiceDaoImpl.AdministratorRequestMapper());
     }
 
-    class StudentCourcesMapper implements RowMapper<Request> {
+    class AdministratorRequestMapper implements RowMapper<Request> {
 
         @Override
         public Request mapRow(ResultSet resultSet, int rowNum) throws SQLException {

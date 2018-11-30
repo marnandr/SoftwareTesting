@@ -3,15 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-        <util:properties id="RequestServiceDao">
+    <util:properties id="CheckRequestStatusao">
 
-            <prop key="select.all.request">
-                <![CDATA[
-                    Select request_id, student_id, request_date, teacher_id, request_status, description from Student_Request
+        <prop key="select.requeststatus">
+        <![CDATA[
+                    Select requeststatus from Student_Request
                 ]]>
 
-
-        </util:properties>
+        </prop>
+    </util:properties>
 
 
 </beans>

@@ -5,5 +5,7 @@ import java.util.Collection;
 
 public interface RequestService {
 
-    public boolean requestCreate(int TeacherID, String course)
+    public boolean requestCreate(int TeacherID, String course);
+
+    public boolean checkRequstStatus(int RequestID);
 }

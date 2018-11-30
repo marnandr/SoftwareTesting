@@ -9,18 +9,22 @@ public class Request{
     private int teacher_id;
     private String request_status;
     private String description;
-
+    private boolean complainflag=true;
     public Request() {
     }
 
-    public Request(int request_id, int student_id, Date request_date, int teacher_id, int request_status, String description) {
+    public Request(int request_id, int student_id, Date request_date, int teacher_id, int request_status, String description, boolean complainflag) {
         this.request_id = request_id;
         this.student_id = student_id;
         this.request_date = request_date;
         this.teacher_id = teacher_id;
         this.request_status = request_status;
         this.description = description;
+        this.complainflag = complainflag;
     }
+    public boolean getComplainflag(){return complainflag;}
+
+    public boolean setComplainFkag(boolean complainflag){this.complainflag=complainflag;}
 
     public int getRequestID() {
         return request_id;

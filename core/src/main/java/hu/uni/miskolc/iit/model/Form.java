@@ -35,7 +35,7 @@ public class Form {
         return "Student: "+student+" Course: "+course+" Text: "+text;
     }
 
-    //region Getters and Setters
+    //Getter and Setter methods
     public Date getDate() {
         return date;
     }
@@ -105,7 +105,5 @@ public class Form {
 
 
 
-
-//endregion
 
 }

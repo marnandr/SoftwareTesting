@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+        <util:properties id="AdministratorServiceDao">
+
+            <prop key="select.all.request">
+                <![CDATA[
+                    Select request_id, student_id, request_date, teacher_id, request_status, description from Student_Request
+                ]]>
+
+            </prop>
+
+            <prop key="modify.FormType">
+                <![CDATA[
+                   Update FormType where Form_tpye=modified_type where id=x
+                ]]>
+
+            </prop>
+
+            <prop key="modify.Complains">
+                <![CDATA[
+                   Update Student_Request_Complain where Complain=modified_complain where id=x
+                ]]>
+
+            </prop>
+
+        </util:properties>
+
+
+</beans>

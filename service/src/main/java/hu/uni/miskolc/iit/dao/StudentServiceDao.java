@@ -11,5 +11,5 @@ public interface StudentServiceDao {
 
     public List<Form>   findAllForms();
 
-    public chechk
+    public boolean chechkRequestStatus(int requestid, boolean status);
 }

@@ -1,12 +1,14 @@
 package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
+import hu.uni.miskolc.iit.model.Request;
 import hu.uni.miskolc.iit.persist.AbstractJdbc;
 import hu.uni.miskolc.iit.StudentServiceDao;
 import hu.uni.miskolc.iit.model.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -34,6 +36,26 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
         return this.getJdbc().query(sql, new StudentCourcesMapper());
     }
 
+    @Override
+    public boolean chechkRequestStatus(int requestid, boolean status) {
+        String sql = sqlStatements.getProperty("select.requeststatus");
+        String tmp =this.getJdbc().query(sql, new CheckRequestsStatusMapper);
+
+
+
+        return status;
+    }
+    class CheckRequestsStatusMapper implements  RowMapper<Request>{
+
+        @Override
+        public Request mapRow(ResultSet resultSet, int i) throws SQLException {
+            Request request = new Request();
+            request.setRequestID(resultSet.getInt("Status"));
+
+            return request;
+
+        }
+    }
 
 
     class StudentCourcesMapper implements RowMapper<Course> {

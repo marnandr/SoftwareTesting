@@ -27,4 +27,9 @@ public class StudentServiceController {
     public ResponseEntity<?> getAllListedCourses(){
         return ResponseEntity.ok(studentService.getAllCourses());
     }
+    @PostMapping(path = "/CheckRequestStatus", consumes = "application/json")
+    public ResponseEntity<?> checkRequestStatus(){
+        return ResponseEntity.ok(studentService.checkRequestStatus());
+    }
+
 }

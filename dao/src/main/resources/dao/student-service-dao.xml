@@ -11,5 +11,12 @@
             ]]>
         </prop>
 
+        <prop key="select.requeststatus">
+            <![CDATA[
+                    Select requeststatus from Student_Request
+                ]]>
+
+        </prop>
+
     </util:properties>
 </beans>

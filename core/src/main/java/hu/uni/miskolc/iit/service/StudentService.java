@@ -7,4 +7,6 @@ import java.util.List;
 public interface StudentService {
 
     public List<Course> getAllCourses();
+
+    public boolean checkRequestStatus();
 }

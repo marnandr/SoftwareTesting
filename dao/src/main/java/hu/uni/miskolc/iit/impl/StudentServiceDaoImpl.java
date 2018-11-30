@@ -2,8 +2,8 @@ package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
 import hu.uni.miskolc.iit.model.Request;
+import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.persist.AbstractJdbc;
-import hu.uni.miskolc.iit.StudentServiceDao;
 import hu.uni.miskolc.iit.model.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,17 +46,19 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     }
     class CheckRequestsStatusMapper implements  RowMapper<Request>{
 
-        @Override
-        public Request mapRow(ResultSet resultSet, int i) throws SQLException {
+      @Override
+      public Request mapRow(ResultSet resultSet, int i) throws SQLException {
             Request request = new Request();
             request.setRequestID(resultSet.getInt("Status"));
-
             return request;
 
-        }
+          }
+      
+      public List<Form> findAllForms() {
+          return null;
+      }
+
     }
-
-
     class StudentCourcesMapper implements RowMapper<Course> {
 
         @Override

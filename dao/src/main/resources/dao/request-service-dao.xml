@@ -10,7 +10,7 @@
                     Select request_id, student_id, request_date, teacher_id, request_status, description from Student_Request
                 ]]>
 
-
+            </prop>
         </util:properties>
 
 

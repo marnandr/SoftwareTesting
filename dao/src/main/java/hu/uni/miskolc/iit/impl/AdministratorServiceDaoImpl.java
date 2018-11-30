@@ -41,5 +41,12 @@ public class AdministratorServiceDaoImpl extends AbstractJdbc implements Adminis
             return request;
         }
     }
+    public void managaFormTypes(String modified_type, int id){
+        String sql = sqlStatements.getProperty("modify.FormType");
+
+    }
+    public void manageComplains(String modified_complain, int id){
+        String sql = sqlStatements.getProperty("modify.Complains");
+    }
 
 }

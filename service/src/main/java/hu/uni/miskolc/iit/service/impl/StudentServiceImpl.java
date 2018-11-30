@@ -23,4 +23,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Course> getAllCourses() {
         return studentServiceDao.findAllCourses();
     }
+
+    @Override
+    public boolean checkRequestStatus(int requestid,boolean status) {
+        return studentServiceDao.chechkRequestStatus( requestid, status);
+    }
 }

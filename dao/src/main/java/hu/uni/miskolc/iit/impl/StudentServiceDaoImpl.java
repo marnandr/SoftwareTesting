@@ -40,8 +40,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     public boolean chechkRequestStatus(int requestid, boolean status) {
         String sql = sqlStatements.getProperty("select.requeststatus");
         String tmp =this.getJdbc().query(sql, new CheckRequestsStatusMapper);
-
-
+        status=Boolean.valueOf(tmp);
 
         return status;
     }

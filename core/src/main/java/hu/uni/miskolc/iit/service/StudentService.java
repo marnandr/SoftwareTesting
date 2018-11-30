@@ -8,5 +8,5 @@ public interface StudentService {
 
     public List<Course> getAllCourses();
 
-    public boolean checkRequestStatus();
+    public boolean checkRequestStatus(int requestid,boolean status);
 }

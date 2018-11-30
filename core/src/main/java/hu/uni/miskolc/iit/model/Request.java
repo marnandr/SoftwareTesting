@@ -13,7 +13,7 @@ public class Request{
     public Request() {
     }
 
-    public Request(int request_id, int student_id, Date request_date, int teacher_id, int request_status, String description, boolean complainflag) {
+    public Request(int request_id, int student_id, Date request_date, int teacher_id, String request_status, String description, boolean complainflag) {
         this.request_id = request_id;
         this.student_id = student_id;
         this.request_date = request_date;
@@ -22,9 +22,9 @@ public class Request{
         this.description = description;
         this.complainflag = complainflag;
     }
-    public boolean getComplainflag(){return complainflag;}
+    public boolean getComplainFlag(){return complainflag;}
 
-    public boolean setComplainFkag(boolean complainflag){this.complainflag=complainflag;}
+    public void setComplainFlag(boolean complainflag){this.complainflag=complainflag;}
 
     public int getRequestID() {
         return request_id;
@@ -47,7 +47,7 @@ public class Request{
     }
 
     public void setRequestDate(Date request_date) {
-        this.request_id = request_date;
+        this.request_date = request_date;
     }
 
     public int getTeacherID() {

@@ -1,18 +1,15 @@
-package hu.uni.miskolc.iit.dao;
+package hu.uni.miskolc.iit.service;
 
 
 import hu.uni.miskolc.iit.model.Request;
 
 import java.util.List;
 
-public interface AdministratorServiceDao {
+public interface AdministratorService {
 
     public List<Request> findAllRequest();
 
-    public void managaFormTypes(String form_type, int id);
+    public void manageFormTypes(String modified_type, int id);
 
     public void manageComplains(String modified_complain, int id);
-
-
-
 }

@@ -28,8 +28,8 @@ public class StudentServiceController {
         return ResponseEntity.ok(studentService.getAllCourses());
     }
     @PostMapping(path = "/CheckRequestStatus", consumes = "application/json")
-    public ResponseEntity<?> checkRequestStatus(){
-        return ResponseEntity.ok(studentService.checkRequestStatus());
+    public ResponseEntity<?> checkRequestStatus(int requestid, boolean status){
+        return ResponseEntity.ok(studentService.checkRequestStatus(requestid,status));
     }
 
 }

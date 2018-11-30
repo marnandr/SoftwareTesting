@@ -7,6 +7,6 @@ public interface ComplainService extends RequestService {
 
 public boolean createComplain(int ComplainID, int RequestID, String Complain) throws CourseAlreadyExistException;
 
-public boolean
+
 
 }

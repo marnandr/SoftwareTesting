@@ -11,6 +11,18 @@
             ]]>
         </prop>
 
+        <prop key="select.all.forms">
+            <![CDATA[
+                Select ID, Course_ID, Student_ID, Teacher_ID, text, Form_date  from Form
+            ]]>
+        </prop>
+
+        <prop key="select.all.requests">
+            <![CDATA[
+                SELECT Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Descriptio FROM Student_Request
+            ]]>
+        </prop>
+
         <prop key="select.requeststatus">
             <![CDATA[
                     Select requeststatus from Student_Request
@@ -19,4 +31,22 @@
         </prop>
 
     </util:properties>
+
+
+    <!-- Initialization for data source -->
+    <bean id="dataSource"
+          class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name = "driverClassName" value = "com.mysql.jdbc.Driver"/>
+        <property name = "url" value = "jdbc:mysql://localhost:3306/TEST"/>
+        <property name = "username" value = "root"/>
+        <property name = "password" value = "password"/>
+    </bean>
+
+    <bean id = "StudentServiceDaoImpl"
+          class = "hu.uni.miskolc.iit.impl.StudentServiceDaoImpl">
+        <property name = "dataSource" ref = "dataSource" />
+    </bean>
+
 </beans>
+
+

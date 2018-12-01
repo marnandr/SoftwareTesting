@@ -27,6 +27,18 @@ public class StudentServiceController {
     public ResponseEntity<?> getAllListedCourses(){
         return ResponseEntity.ok(studentService.getAllCourses());
     }
+
+    //method to get all listed forms
+    @PostMapping(path = "/listForms", consumes = "application/json")
+    public ResponseEntity<?> getAllListedForms(){ return ResponseEntity.ok(studentService.getAllForms());
+    }
+
+    //method to create a new request
+    @PostMapping(path = "/createRequest", consumes = "application/json")
+    public ResponseEntity<?> createRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description) {
+        return ResponseEntity.ok(studentService.createNewRequest( Request_ID,  Student_ID,  Teacher_ID,  Request_Status,  Request_Description));
+    }
+
     @PostMapping(path = "/CheckRequestStatus", consumes = "application/json")
     public ResponseEntity<?> checkRequestStatus(int requestid, boolean status){
         return ResponseEntity.ok(studentService.checkRequestStatus(requestid,status));

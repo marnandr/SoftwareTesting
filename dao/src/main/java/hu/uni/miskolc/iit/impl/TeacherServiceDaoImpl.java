@@ -30,14 +30,16 @@ public class TeacherServiceDaoImpl extends AbstractJdbc implements TeacherServic
 
     class TeacherFormsMapper implements RowMapper<Form> {
 
+
         @Override
         public Form mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             Form form = new Form();
-            form.setCourseID(resultSet.getString("courseId"));
-            form.setStudentID(resultSet.getString("studentId"));
-            form.setTeacherID(resultSet.getString("teacherId"));
+            form.setForm_id(resultSet.getInt("ID"));
+            form.setCourseID(resultSet.getString("Course_ID"));
+            form.setStudentID(resultSet.getString("Student_ID"));
+            form.setTeacherID(resultSet.getString("Teacher_ID"));
             form.setText(resultSet.getString("text"));
-            form.setDate(resultSet.getDate("date"));
+            form.setDate(resultSet.getDate("Form_date"));
             //form.setCurrentState(resultSet.getString("state"));
 
             return form;

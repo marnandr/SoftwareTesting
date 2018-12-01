@@ -3,6 +3,7 @@ package hu.uni.miskolc.iit.model;
 import java.util.Date;
 
 public class Form {
+    private int form_id;
     private Student student;
     private Teacher teacher;
     private Course course;
@@ -102,6 +103,13 @@ public class Form {
     public void setCourseID(String courseID) {
         CourseID = courseID;
     }
+    public int getForm_id() {
+        return form_id;
+    }
+    public void setForm_id(int form_id) {
+        this.form_id = form_id;
+    }
+
 
 
 

@@ -1,11 +1,12 @@
 package hu.uni.miskolc.iit.service;
 
-import hu.uni.miskolc.iit.exceptions.CourseAlreadyExistException;
+
+import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
 
 // delete create enum
 public interface ComplainService extends RequestService {
 
-public boolean createComplain(int ComplainID, int RequestID, String Complain) throws CourseAlreadyExistException;
+public boolean createComplain(int ComplainID, int RequestID, String Complain) throws ComplainAlreadyExistsException;
 
 
 

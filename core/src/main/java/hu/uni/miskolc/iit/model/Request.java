@@ -9,6 +9,8 @@ public class Request{
     private int teacher_id;
     private String request_status;
     private String description;
+    private int course_id;
+    private int form_id;
     private boolean complainflag=true;
     public Request() {
     }
@@ -74,4 +76,19 @@ public class Request{
         this.description= this.description;
     }
 
+    public int getCourse_id() {
+        return course_id;
+    }
+
+    public void setCourseID(int course_id) {
+        this.course_id = course_id;
+    }
+
+    public int getFormID() {
+        return form_id;
+    }
+
+    public void setFormID(int form_id) {
+        this.form_id = form_id;
+    }
 }

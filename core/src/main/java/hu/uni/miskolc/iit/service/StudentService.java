@@ -1,18 +1,16 @@
 package hu.uni.miskolc.iit.service;
 
+import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
+import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
 import hu.uni.miskolc.iit.model.Course;
-import hu.uni.miskolc.iit.model.Form;
-import hu.uni.miskolc.iit.model.Request;
 
 import java.util.List;
 
-public interface StudentService {
+public interface StudentService{
 
     public List<Course> getAllCourses();
 
-    public List<Form> getAllForms();
+    public boolean checkRequestStatus(int requestid,boolean status) throws RequestDoesNotExistException;
 
-    public Request createNewRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description);
-
-    public boolean checkRequestStatus(int requestid,boolean status);
+    public boolean createComplain(int complainID, int requestID, String complain) throws ComplainAlreadyExistsException;
 }

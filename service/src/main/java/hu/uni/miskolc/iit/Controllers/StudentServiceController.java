@@ -1,5 +1,8 @@
 package hu.uni.miskolc.iit.Controllers;
 
+import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
+import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
+import hu.uni.miskolc.iit.service.ComplainService;
 import hu.uni.miskolc.iit.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,20 +31,23 @@ public class StudentServiceController {
         return ResponseEntity.ok(studentService.getAllCourses());
     }
 
-    //method to get all listed forms
-    @PostMapping(path = "/listForms", consumes = "application/json")
-    public ResponseEntity<?> getAllListedForms(){ return ResponseEntity.ok(studentService.getAllForms());
-    }
 
-    //method to create a new request
-    @PostMapping(path = "/createRequest", consumes = "application/json")
-    public ResponseEntity<?> createRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description) {
-        return ResponseEntity.ok(studentService.createNewRequest( Request_ID,  Student_ID,  Teacher_ID,  Request_Status,  Request_Description));
-    }
 
     @PostMapping(path = "/CheckRequestStatus", consumes = "application/json")
     public ResponseEntity<?> checkRequestStatus(int requestid, boolean status){
-        return ResponseEntity.ok(studentService.checkRequestStatus(requestid,status));
+        try {
+            return ResponseEntity.ok(studentService.checkRequestStatus(requestid,status));
+        } catch (RequestDoesNotExistException e) {
+            return (ResponseEntity<?>) ResponseEntity.noContent();
+        }
     }
 
+    @PostMapping(path = "/makeComplaint", consumes = "application/json")
+    public ResponseEntity<?> makeComplain(int ComplainID, int RequestID, String Complain){
+        try {
+            return ResponseEntity.ok(complainService.createComplain(ComplainID, RequestID, Complain));
+        } catch (ComplainAlreadyExistsException e) {
+            return (ResponseEntity<?>) ResponseEntity.badRequest();
+        }
+    }
 }

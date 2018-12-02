@@ -5,11 +5,11 @@ import hu.uni.miskolc.iit.dao.StudentServiceDao;
 import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
 import hu.uni.miskolc.iit.impl.StudentServiceDaoImpl;
 import hu.uni.miskolc.iit.model.Course;
-import hu.uni.miskolc.iit.model.Request;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;

@@ -23,15 +23,13 @@ public class AdministratorServiceImpl implements AdministratorService {
 
     @Override
     public void manageFormTypes(String modified_type, int id) {
-
+        administratorServiceDao.managaFormTypes(modified_type, id);
+        return;
     }
 
     @Override
     public void manageComplains(String modified_complain, int id) {
-
+        administratorServiceDao.manageComplains(modified_complain, id);
+        return;
     }
-
-
-
-
 }

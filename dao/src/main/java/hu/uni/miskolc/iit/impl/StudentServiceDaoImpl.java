@@ -37,9 +37,8 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     @Override
     public boolean chechkRequestStatus(int requestid, boolean status) {
         String sql = sqlStatements.getProperty("select.requeststatus");
-        String tmp =this.getJdbc().query(sql, new CheckRequestsStatusMapper);
-        status=Boolean.valueOf(tmp);
-
+        List<Form> tmp =this.getJdbc().query(sql, new CheckRequestsStatusMapper());
+        status=Boolean.valueOf(tmp.get(0).getCurrentState().toString().equals("CLOSED")==true?false:true);
         return status;
     }
     class CheckRequestsStatusMapper implements  RowMapper<Form>{

@@ -31,7 +31,7 @@ public class ComplainServiceImpl implements ComplainService {
         @Override
         public boolean createComplain(int ComplainID, int RequestID, String Complain) throws ComplainAlreadyExistsException {
 
-            return studentServiceDao.createComplain(ComplainID, RequestID, Complain)
+            return studentServiceDao.createComplain(ComplainID, RequestID, Complain);
         }
 
     }

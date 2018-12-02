@@ -25,4 +25,17 @@ public class StudentServiceImplTests {
         assertTrue(allCourses.size() > 0);
     }
 
+
+    @Test
+    public void getAllForms() {
+    }
+
+    @Test
+    public void createNewRequest() {
+    }
+
+    @Test
+    public void checkRequestStatus() {
+    }
+
 }

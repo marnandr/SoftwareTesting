@@ -26,4 +26,24 @@ public class StudentServiceDaoTest {
         assertTrue(allCourses.size() > 0);
     }
 
+    @Test
+    public void findAllForms() {
+    }
+
+    @Test
+    public void setDataSource() {
+    }
+
+    @Test
+    public void createRequest() {
+    }
+
+    @Test
+    public void findAllRequests() {
+    }
+
+    @Test
+    public void chechkRequestStatus() {
+    }
+
 }

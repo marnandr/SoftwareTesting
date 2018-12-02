@@ -82,6 +82,12 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     }
 
     @Override
+    public Request findRequestById(int requestId) {
+        String sql = "SELECT Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Descriptio FROM Student_Request WHERE Request_ID = requestid";
+        return this.getJdbc().query(sql, new StudentRequestMapper());
+    }
+
+    @Override
     public List<Request> findAllRequests() {
         String sql = sqlStatements.getProperty("select.all.requests");
         return this.getJdbc().query(sql, new StudentRequestMapper());

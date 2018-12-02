@@ -45,7 +45,7 @@ public class StudentServiceController {
     @PostMapping(path = "/makeComplaint", consumes = "application/json")
     public ResponseEntity<?> makeComplain(int ComplainID, int RequestID, String Complain){
         try {
-            return ResponseEntity.ok(complainService.createComplain(ComplainID, RequestID, Complain));
+            return ResponseEntity.ok(studentService.createComplain(ComplainID, RequestID, Complain));
         } catch (ComplainAlreadyExistsException e) {
             return (ResponseEntity<?>) ResponseEntity.badRequest();
         }

@@ -37,6 +37,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<Request> getAllRequests() { return studentServiceDao.findAllRequests(); }
+
+    @Override
+    public Request getRequestById(int requestId) { return studentServiceDao.findRequestById(requestId); }
+
+    @Override
     public List<Request> checkRequestStatus(int requestid, boolean status) {
         return studentServiceDao.chechkRequestStatus(requestid, status);
     }

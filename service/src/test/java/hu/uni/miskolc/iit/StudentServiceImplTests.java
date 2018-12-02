@@ -1,6 +1,8 @@
 package hu.uni.miskolc.iit;
 
 import hu.uni.miskolc.iit.model.Course;
+import hu.uni.miskolc.iit.model.Form;
+import hu.uni.miskolc.iit.model.Request;
 import hu.uni.miskolc.iit.service.StudentService;
 import hu.uni.miskolc.iit.service.impl.StudentServiceImpl;
 import org.junit.Test;
@@ -12,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
+import static  org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,7 +31,7 @@ public class StudentServiceImplTests {
 
     @Test
     public void getAllFormsTest() {
-        Lis<Form> allForms  = studentService.getAllForms();
+        List<Form> allForms  = studentService.getAllForms();
         assertTrue(allForms.size() > 0);
     }
 
@@ -42,7 +45,7 @@ public class StudentServiceImplTests {
 
     @Test
     public void getAllRequestsTest() {
-        Lis<Request> allRequests = studentService.getAllRequest();
+        List<Request> allRequests = studentService.getAllRequest();
         assertTrue(allRequests.size() > 0);
     }
 

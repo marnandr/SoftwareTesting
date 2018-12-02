@@ -21,7 +21,7 @@ public class TeacherServiceImplTest {
     private TeacherService teacherService = new TeacherServiceImpl();
 
     @Test
-    public void getAllCoursesTest() {
+    public void getFormsTest() {
         List<Form> allForms = teacherService.getForms();
         assertTrue(allForms.size() > 0);
     }

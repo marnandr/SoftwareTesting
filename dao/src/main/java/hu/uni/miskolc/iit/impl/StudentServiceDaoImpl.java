@@ -2,16 +2,13 @@ package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
 import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
-import hu.uni.miskolc.iit.model.Request;
-import hu.uni.miskolc.iit.model.Form;
-import hu.uni.miskolc.iit.model.StudentRequestComplain;
-import hu.uni.miskolc.iit.persist.AbstractJdbc;
 import hu.uni.miskolc.iit.model.Course;
-
+import hu.uni.miskolc.iit.model.Form;
+import hu.uni.miskolc.iit.model.Request;
+import hu.uni.miskolc.iit.persist.AbstractJdbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 

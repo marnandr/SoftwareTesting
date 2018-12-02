@@ -7,7 +7,7 @@
 
             <prop key="select.all.request">
                 <![CDATA[
-                    Select request_id, student_id, request_date, teacher_id, request_status, description from Student_Request
+                    Select request_id, student_id, request_date, teacher_id, request_status, description from Student_Request where requestbool=1
                 ]]>
 
             </prop>

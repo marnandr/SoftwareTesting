@@ -12,7 +12,6 @@ public class Form {
     private formState currentState;
     private FormTypes formType;
     private History formHistory;
-
     private String teacherID;
     private String studentID;
     private String CourseID;

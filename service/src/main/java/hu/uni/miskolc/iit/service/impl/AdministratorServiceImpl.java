@@ -1,13 +1,8 @@
 package hu.uni.miskolc.iit.service.impl;
 
 import hu.uni.miskolc.iit.dao.AdministratorServiceDao;
-import hu.uni.miskolc.iit.exceptions.UserAlreadyExist;
-import hu.uni.miskolc.iit.exceptions.UserCanNotLogin;
-import hu.uni.miskolc.iit.exceptions.UserDoesNotExist;
-import hu.uni.miskolc.iit.model.Course;
-import hu.uni.miskolc.iit.model.Request;
+import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.service.AdministratorService;
-import hu.uni.miskolc.iit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +17,7 @@ public class AdministratorServiceImpl implements AdministratorService {
     AdministratorServiceDao administratorServiceDao;
 
     @Override
-    public List<Request> findAllRequest() {
+    public List<Form> findAllRequest() {
         return administratorServiceDao.findAllRequest();
     }
 

@@ -1,7 +1,7 @@
 package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.AdministratorServiceDao;
-import hu.uni.miskolc.iit.model.Request;
+import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.persist.AbstractJdbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,24 +21,22 @@ public class AdministratorServiceDaoImpl extends AbstractJdbc implements Adminis
     private Properties sqlStatements;
 
     @Override
-    public List<Request> findAllRequest() {
+    public List<Form> findAllRequest() {
         String sql = sqlStatements.getProperty("select.all.request");
         return this.getJdbc().query(sql, new AdministratorServiceDaoImpl.AdministratorRequestMapper());
     }
 
-    class AdministratorRequestMapper implements RowMapper<Request> {
-
+    class AdministratorRequestMapper implements RowMapper<Form> {
+//
         @Override
-        public Request mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-            Request request = new Request();
-            request.setRequestID(resultSet.getInt("requestid"));
-            request.setStudentID(resultSet.getInt("studentid"));
-            request.setRequestDate(resultSet.getDate("requestdate"));
-            request.setTeacherID(resultSet.getInt("teacberid"));
-            request.setRequestStatus(resultSet.getString("Requeststatus"));
-            request.setDescription(resultSet.getString("Description"));
-
-            return request;
+        public Form mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+            Form form = new Form();
+            form.setStudentID(resultSet.getString("StudentID"));
+            form.setTeacherID(resultSet.getString("TeacherID"));
+            form.setCourseID(resultSet.getString("CoureseID"));
+            form.setText(resultSet.getString("Text"));
+            form.setDate(resultSet.getDate("Date"));
+            return form;
         }
     }
     public void managaFormTypes(String modified_type, int id){

@@ -1,14 +1,12 @@
 package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
-import hu.uni.miskolc.iit.model.Request;
 import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.persist.AbstractJdbc;
 import hu.uni.miskolc.iit.model.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -44,13 +42,13 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
 
         return status;
     }
-    class CheckRequestsStatusMapper implements  RowMapper<Request>{
+    class CheckRequestsStatusMapper implements  RowMapper<Form>{
 
       @Override
-      public Request mapRow(ResultSet resultSet, int i) throws SQLException {
-            Request request = new Request();
-            request.setRequestID(resultSet.getInt("Status"));
-            return request;
+      public Form mapRow(ResultSet resultSet, int i) throws SQLException {
+            Form form = new Form();
+            form.setCurrentState(Enum.valueOf(Form.formState.class , resultSet.getString("Status")));
+            return form;
 
           }
       

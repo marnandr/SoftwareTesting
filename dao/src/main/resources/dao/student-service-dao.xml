@@ -13,7 +13,7 @@
 
         <prop key="select.requeststatus">
             <![CDATA[
-                    Select requeststatus from Student_Request
+                    Select currentState from Student_Request where requestbool=1
                 ]]>
 
         </prop>

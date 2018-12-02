@@ -4,17 +4,20 @@ import hu.uni.miskolc.iit.dao.StudentServiceDao;
 import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
 import hu.uni.miskolc.iit.model.Request;
 import hu.uni.miskolc.iit.model.Form;
+import hu.uni.miskolc.iit.model.StudentRequestComplain;
 import hu.uni.miskolc.iit.persist.AbstractJdbc;
 import hu.uni.miskolc.iit.model.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
@@ -45,7 +48,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     @Override
     public boolean checkRequestStatus(int requestid, boolean status) throws RequestDoesNotExistException {
         String sql = sqlStatements.getProperty("select.requeststatus");
-        List<Request> requests =this.getJdbc().query(sql, new CheckRequestsStatusMapper);
+        List<Request> requests =this.getJdbc().query(sql, new CheckRequestsStatusMapper());
         String tmp;
 
         if(!requests.isEmpty())
@@ -57,8 +60,6 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
         {
             throw new RequestDoesNotExistException();
         }
-
-        return status;
     }
     class CheckRequestsStatusMapper implements  RowMapper<Request>{
 
@@ -72,7 +73,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
 
       }
 
-    }
+
     class StudentCourcesMapper implements RowMapper<Course> {
 
         @Override
@@ -85,30 +86,19 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
 
             return course;
         }
+
     }
 
         @Override
-        public boolean createComplain(int complainID, int requestID, String complain) {
+        public boolean createComplain(int complainID, int requestID, String complain) throws DataAccessException {
             String sql = sqlStatements.getProperty("insert.complaint");
-            List<Request> requests = this.getJdbc().update(sql, new StudentRequestMapper());
+
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("ID", complainID);
+            map.put("Request_ID_FK", requestID);
+            map.put("Complain", complain);
+
+            this.getJdbc().update(sql, map);
+            return true;
         }
-
-class StudentRequestMapper implements RowMapper<Request> {
-
-    @Override
-    public Request mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        Request request = new Request();
-        request.setRequestID(resultSet.getInt("Request_ID"));
-        request.setStudentID(resultSet.getInt("Student_ID"));
-        request.setRequestDate(resultSet.getDate("Request_Date"));
-        request.setTeacherID(resultSet.getInt("Teacher_ID"));
-        request.setRequestStatus(resultSet.getString("Request_Status"));
-        request.setDescription(resultSet.getString("Description"));
-        request.setCourseID(resultSet.getInt("Course_ID"));
-        request.setFormID(resultSet.getInt("FORM_ID"));
-
-        return request;
-    }
-}
-
 }

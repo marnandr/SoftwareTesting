@@ -12,19 +12,19 @@ public class History {
     private ArrayList<Action> actions; //holds actor (user) and action pairs and the date
 
 
-    public History(User user, FormAction formAction){
+    public History(User user, FormAction formAction) {
         Action firstAction = new Action(user, formAction);
         actions = new ArrayList<Action>();
         actions.add(firstAction);
     }
 
-    public void setAction(User user, FormAction formAction){
+    public void setAction(User user, FormAction formAction) {
         Action newAction = new Action(user, formAction);
         actions.add(newAction);
     }
 
     //returns the whole history of the calling form as an arraylist
-    public ArrayList<Action> getHistory(){
+    public ArrayList<Action> getHistory() {
         return actions;
     }
 

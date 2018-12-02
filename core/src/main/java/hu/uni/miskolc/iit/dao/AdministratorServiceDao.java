@@ -14,5 +14,4 @@ public interface AdministratorServiceDao {
     public void manageComplains(String modified_complain, int id);
 
 
-
 }

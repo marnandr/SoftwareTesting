@@ -14,5 +14,5 @@ public interface StudentService {
 
     public Request createNewRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description);
 
-    public boolean checkRequestStatus(int requestid,boolean status);
+    public List<Request> checkRequestStatus(int requestid, boolean status);
 }

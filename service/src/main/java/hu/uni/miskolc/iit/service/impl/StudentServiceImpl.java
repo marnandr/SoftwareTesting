@@ -27,13 +27,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Form> getAllForms() { return studentServiceDao.findAllForms();}
+    public List<Form> getAllForms() {
+        return studentServiceDao.findAllForms();
+    }
 
     @Override
-    public Request createNewRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description) { return studentServiceDao.createRequest(Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description);}
+    public Request createNewRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description) {
+        return studentServiceDao.createRequest(Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description);
+    }
 
     @Override
-    public boolean checkRequestStatus(int requestid,boolean status) {
-        return studentServiceDao.chechkRequestStatus( requestid, status);
+    public List<Request> checkRequestStatus(int requestid, boolean status) {
+        return studentServiceDao.chechkRequestStatus(requestid, status);
     }
 }

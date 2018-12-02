@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Properties;
 
 
-
 import javax.sql.DataSource;
 
 
@@ -47,6 +46,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
 
     /**
      * getting all listed forms from the DB
+     *
      * @return
      */
     @Override
@@ -57,6 +57,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
 
     /**
      * set the datasource for the insert statement
+     *
      * @param dataSource
      */
     public void setDataSource(DataSource dataSource) {
@@ -66,6 +67,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
 
     /**
      * create the new request
+     *
      * @param Request_ID
      * @param Student_ID
      * @param Teacher_ID
@@ -74,7 +76,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
      */
     public Request createRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description) {
         String INSERT_SQL = "INSERT INTO Student_Request(Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description) values(?,?,?,?,?)";
-        jdbcTemplateObject.update( INSERT_SQL,Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description);
+        jdbcTemplateObject.update(INSERT_SQL, Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description);
         Request request = new Request();
         return request;
     }
@@ -86,14 +88,10 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     }
 
     @Override
-    public boolean chechkRequestStatus(int requestid, boolean status) {
+    public List<Request> chechkRequestStatus(int requestid, boolean status) {
         String sql = sqlStatements.getProperty("select.requeststatus");
-        String tmp = this.getJdbc().query(sql, new CheckRequestsStatusMapper);
-        status = Boolean.valueOf(tmp);
-
-        return status;
+        return this.getJdbc().query(sql, new CheckRequestsStatusMapper());
     }
-
 
 
     class StudentCoursesMapper implements RowMapper<Course> {
@@ -140,7 +138,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
         }
     }
 
-    class CheckRequestsStatusMapper implements RowMapper<Request> {
+    public class CheckRequestsStatusMapper implements RowMapper<Request> {
 
         @Override
         public Request mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -149,11 +147,6 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
             return request;
 
         }
-
-        public List<Form> findAllForms() {
-            return null;
-        }
-
     }
 }
 

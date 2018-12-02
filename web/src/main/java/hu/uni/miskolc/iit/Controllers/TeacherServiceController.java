@@ -18,7 +18,7 @@ public class TeacherServiceController {
     TeacherService teacherService;
 
     @PostMapping(path = "/listForms", consumes = "application/json")
-    public ResponseEntity<?> getAllListedForms(){
+    public ResponseEntity<?> getAllListedForms() {
         return ResponseEntity.ok(teacherService.getForms());
     }
 }

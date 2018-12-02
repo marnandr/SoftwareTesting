@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdministratorServiceController {
 
 
-
     @RestController
     @RequestMapping(value = "/services/administrators")
     @Validated
@@ -24,22 +23,24 @@ public class AdministratorServiceController {
 
         /**
          * this method is to get all listed courses
-         *
+         * <p>
          * the endpoint for this API =  localhost/services/students/listCourses
          *
          * @return List of courses
          */
         @PostMapping(path = "/listCourses", consumes = "application/json")
-        public ResponseEntity<?> findallRequest(){
+        public ResponseEntity<?> findallRequest() {
             return ResponseEntity.ok(administratorService.findAllRequest());
         }
+
         @PostMapping(path = "/manageFormType", consumes = "application/json")
-        public ResponseEntity<?> manageFormTypes(String modified_type, int id){
+        public ResponseEntity<?> manageFormTypes(String modified_type, int id) {
             administratorService.manageFormTypes(modified_type, id);
             return null;
         }
+
         @PostMapping(path = "/manageComplains", consumes = "application/json")
-        public ResponseEntity<?> manageComplain(String modified_complain, int id){
+        public ResponseEntity<?> manageComplain(String modified_complain, int id) {
             administratorService.manageFormTypes(modified_complain, id);
             return null;
         }

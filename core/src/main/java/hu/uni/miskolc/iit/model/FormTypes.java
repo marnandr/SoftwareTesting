@@ -1,6 +1,6 @@
 package hu.uni.miskolc.iit.model;
 
-public enum FormTypes{
+public enum FormTypes {
 
     RETAKE_EXAM,
     MISSED_HOMEWORK_DEADLINE,

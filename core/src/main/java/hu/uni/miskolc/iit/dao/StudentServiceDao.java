@@ -11,7 +11,7 @@ public interface StudentServiceDao {
 
     public List<Course> findAllCourses();
 
-    public List<Form>   findAllForms();
+    public List<Form> findAllForms();
 
     public void setDataSource(DataSource ds);
 
@@ -19,6 +19,6 @@ public interface StudentServiceDao {
 
     public List<Request> findAllRequests();
 
-    public boolean chechkRequestStatus(int requestid, boolean status);
+    public List<Request> chechkRequestStatus(int requestid, boolean status);
 
 }

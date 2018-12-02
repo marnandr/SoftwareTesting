@@ -1,6 +1,8 @@
 package hu.uni.miskolc.iit.model;
+
 import java.util.Date;
-public class Request{
+
+public class Request {
 
 
     private int request_id;
@@ -9,7 +11,8 @@ public class Request{
     private int teacher_id;
     private String request_status;
     private String description;
-    private boolean complainflag=true;
+    private boolean complainFlag = true;
+
     public Request() {
     }
 
@@ -20,11 +23,16 @@ public class Request{
         this.teacher_id = teacher_id;
         this.request_status = request_status;
         this.description = description;
-        this.complainflag = complainflag;
+        this.complainFlag = complainflag;
     }
-    public boolean getComplainFlag(){return complainflag;}
 
-    public void setComplainFlag(boolean complainflag){this.complainflag=complainflag;}
+    public boolean getComplainFlag() {
+        return complainFlag;
+    }
+
+    public void setComplainFlag(boolean complainflag) {
+        this.complainFlag = complainflag;
+    }
 
     public int getRequestID() {
         return request_id;
@@ -58,20 +66,20 @@ public class Request{
         this.teacher_id = teacher_id;
     }
 
-    public String getRequestStatus(){
+    public String getRequestStatus() {
         return request_status;
     }
 
-    public void setRequestStatus(String requeststatus){
-        this.request_status=request_status;
+    public void setRequestStatus(String requeststatus) {
+        this.request_status = request_status;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description){
-        this.description= this.description;
+    public void setDescription(String description) {
+        this.description = this.description;
     }
 
 }

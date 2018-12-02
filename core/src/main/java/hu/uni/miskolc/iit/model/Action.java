@@ -13,7 +13,7 @@ public class Action {
     private FormAction formAction;
     private Date date;
 
-    public Action(User user, FormAction formAction){
+    public Action(User user, FormAction formAction) {
         this.user = user;
         this.formAction = formAction;
         date = new Date();
@@ -45,7 +45,7 @@ public class Action {
     }
 
     @Override
-    public String toString(){
-        return user.toString()+"\n"+ formAction.toString()+" the request on "+date;
+    public String toString() {
+        return user.toString() + "\n" + formAction.toString() + " the request on " + date;
     }
 }

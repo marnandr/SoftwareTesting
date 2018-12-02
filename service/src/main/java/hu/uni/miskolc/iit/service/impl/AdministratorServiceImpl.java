@@ -37,6 +37,4 @@ public class AdministratorServiceImpl implements AdministratorService {
     }
 
 
-
-
 }

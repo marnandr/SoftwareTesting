@@ -9,7 +9,6 @@ import java.util.Collection;
 
 public interface CourseService {
     /**
-     *
      * @param courseName
      * @param description
      * @param teacherID
@@ -19,13 +18,11 @@ public interface CourseService {
     public boolean courseCreation(String courseName, String description, int teacherID) throws CourseAlreadyExistException;
 
     /**
-     *
      * @return
      */
     public Collection<Course> courseList() throws ListNotFound;
 
     /**
-     *
      * @param courseName
      * @param description
      * @param teacherID

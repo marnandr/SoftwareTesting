@@ -27,19 +27,28 @@ public class StudentServiceDaoTest {
     }
 
     @Test
-    public void findAllForms() {
+    public void findAllFormsTest() {
+        Lis<Form> allForms  = studentServiceDao.findAllForms();
+        assertTrue(allForms.size() > 0);
+    }
+
+    /*@Test
+    public void setDataSourceTest() {
+
+    }*/
+
+    @Test
+    public void createRequestTest() {
+        Request savedRequest = studentServiceDao.createRequest(1,2,3, "REQUESTED", "RETAKE_EXAM");
+        Request requestFromDb = studentServiceDao.findRequestById(savedReques.getRequestID());
+        assertEquals(savedRequest.getRequestID(), requestFromDb.getRequestID());
+        assertEquals(savedRequest.getStudentID(), requestFromDb.getStudentID());
     }
 
     @Test
-    public void setDataSource() {
-    }
-
-    @Test
-    public void createRequest() {
-    }
-
-    @Test
-    public void findAllRequests() {
+    public void findAllRequestsTest() {
+        Lis<Request> allRequests = studentServiceDao.findAllRequest();
+        assertTrue(allRequests.size() > 0);
     }
 
     @Test

@@ -27,11 +27,23 @@ public class StudentServiceImplTests {
 
 
     @Test
-    public void getAllForms() {
+    public void getAllFormsTest() {
+        Lis<Form> allForms  = studentService.getAllForms();
+        assertTrue(allForms.size() > 0);
     }
 
     @Test
-    public void createNewRequest() {
+    public void createNewRequestTest() {
+        Request savedRequest = studentService.createNewRequest(1,2,3, "REQUESTED", "RETAKE_EXAM");
+        Request requestFromDb = studentService.getRequestById(savedRequest.getRequestID());
+        assertEquals(savedRequest.getRequestID(), requestFromDb.getRequestID());
+        assertEquals(savedRequest.getStudentID(), requestFromDb.getStudentID());
+    }
+
+    @Test
+    public void getAllRequestsTest() {
+        Lis<Request> allRequests = studentService.getAllRequest();
+        assertTrue(allRequests.size() > 0);
     }
 
     @Test

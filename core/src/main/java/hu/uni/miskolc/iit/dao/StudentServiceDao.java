@@ -17,6 +17,8 @@ public interface StudentServiceDao {
 
     public Request createRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description);
 
+    public Request findRequestById(int requestId);
+
     public List<Request> findAllRequests();
 
     public List<Request> chechkRequestStatus(int requestid, boolean status);

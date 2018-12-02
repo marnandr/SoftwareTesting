@@ -20,7 +20,7 @@
 
         <prop key="insert.complaint">
             <![CDATA[
-                    Insert requeststatus from Student_Request
+                    INSERT INTO Student_Request_Complain(ID, Request_ID_FK, Complain) VALUES(?,?,?)
                 ]]>
 
         </prop>

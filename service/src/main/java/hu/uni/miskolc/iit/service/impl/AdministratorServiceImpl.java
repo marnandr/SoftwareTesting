@@ -5,6 +5,7 @@ import hu.uni.miskolc.iit.exceptions.UserAlreadyExist;
 import hu.uni.miskolc.iit.exceptions.UserCanNotLogin;
 import hu.uni.miskolc.iit.exceptions.UserDoesNotExist;
 import hu.uni.miskolc.iit.model.Course;
+import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.model.Request;
 import hu.uni.miskolc.iit.service.AdministratorService;
 import hu.uni.miskolc.iit.service.UserService;
@@ -22,18 +23,17 @@ public class AdministratorServiceImpl implements AdministratorService {
     AdministratorServiceDao administratorServiceDao;
 
     @Override
-    public List<Request> findAllRequest() {
+    public List<Form> findAllRequest() {
         return administratorServiceDao.findAllRequest();
     }
 
     @Override
     public void manageFormTypes(String modified_type, int id) {
-
+        administratorServiceDao.managaFormTypes(modified_type, id);
     }
-
     @Override
     public void manageComplains(String modified_complain, int id) {
-
+        administratorServiceDao.manageComplains(modified_complain, id);
     }
 
 

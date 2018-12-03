@@ -16,7 +16,7 @@ public interface StudentService {
 
     public List<Request> getAllRequests();
 
-    public Request getRequestById(int requestId);
+    public List<Request> getRequestById(int requestId);
 
-    public List<Request> checkRequestStatus(int requestid, boolean status);
+    public String checkRequestStatus(int requestid, boolean status, String complain);
 }

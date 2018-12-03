@@ -9,7 +9,6 @@ import hu.uni.miskolc.iit.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -74,7 +73,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
      * @param Request_Status
      * @param Request_Description
      */
-    public Request createRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description) {
+    public Form createRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description) {
         String INSERT_SQL = "INSERT INTO Student_Request(Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description) values(?,?,?,?,?)";
         jdbcTemplateObject.update(INSERT_SQL, Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description);
         Request request = new Request();
@@ -82,7 +81,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     }
 
     @Override
-    public Request findRequestById(int requestId) {
+    public List<Request> findRequestById(int requestId) {
         String sql = "SELECT Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Descriptio FROM Student_Request WHERE Request_ID = requestid";
         return this.getJdbc().query(sql, new StudentRequestMapper());
     }
@@ -94,7 +93,7 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     }
 
     @Override
-    public List<Request> chechkRequestStatus(int requestid, boolean status) {
+    public List<Form> chechkRequestStatus(int requestid, boolean status) {
         String sql = sqlStatements.getProperty("select.requeststatus");
         return this.getJdbc().query(sql, new CheckRequestsStatusMapper());
     }
@@ -144,13 +143,13 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
         }
     }
 
-    public class CheckRequestsStatusMapper implements RowMapper<Request> {
+    public class CheckRequestsStatusMapper implements RowMapper<Form> {
 
         @Override
-        public Request mapRow(ResultSet resultSet, int i) throws SQLException {
-            Request request = new Request();
-            request.setRequestID(resultSet.getInt("Status"));
-            return request;
+        public Form mapRow(ResultSet resultSet, int i) throws SQLException {
+            Form form = new Form();
+            form.setCurrentState((Form.formState) resultSet.getObject("requeststatus"));
+            return form;
 
         }
     }

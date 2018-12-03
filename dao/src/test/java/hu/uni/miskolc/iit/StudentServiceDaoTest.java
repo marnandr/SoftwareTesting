@@ -8,14 +8,13 @@ import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.model.Request;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -42,15 +41,15 @@ public class StudentServiceDaoTest {
 
     @Test
     public void createRequestTest() {
-        Request savedRequest = studentServiceDao.createRequest(1,2,3, "REQUESTED", "RETAKE_EXAM");
-        Request requestFromDb = studentServiceDao.findRequestById(savedRequest.getRequestID());
+        Form savedRequest = studentServiceDao.createRequest(1,2,3, "REQUESTED", "RETAKE_EXAM");
+        Form requestFromDb = studentServiceDao.findRequestById(savedRequest.getRequestID());
         assertEquals(savedRequest.getRequestID(), requestFromDb.getRequestID());
         assertEquals(savedRequest.getStudentID(), requestFromDb.getStudentID());
     }
 
     @Test
     public void findAllRequestsTest() {
-        List<Request> allRequests = studentServiceDao.findAllRequest();
+        List<Form> allRequests = studentServiceDao.findAllForms();
         assertTrue(allRequests.size() > 0);
     }
 

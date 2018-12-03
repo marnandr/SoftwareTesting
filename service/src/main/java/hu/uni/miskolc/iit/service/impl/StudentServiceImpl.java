@@ -37,13 +37,26 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Request> getAllRequests() { return studentServiceDao.findAllRequests(); }
+    public List<Request> getAllRequests() {
+        return studentServiceDao.findAllRequests();
+    }
 
     @Override
-    public Request getRequestById(int requestId) { return studentServiceDao.findRequestById(requestId); }
+    public List<Request> getRequestById(int requestId) {
+        return studentServiceDao.findRequestById(requestId);
+    }
 
     @Override
-    public List<Request> checkRequestStatus(int requestid, boolean status) {
-        return studentServiceDao.chechkRequestStatus(requestid, status);
+    public String checkRequestStatus(int requestid, boolean status, String complain) {
+        List<Form> formList = studentServiceDao.chechkRequestStatus(requestid, status);
+        Boolean isRequestAvailable = Boolean.valueOf(formList.get(0).getCurrentState().toString().equals("CLOSED") == true ? false : true);
+        String message;
+        if (isRequestAvailable) {
+            message = "Request is still open, you can't add any complaints";
+        } else {
+            //TODO: create dao method for adding complain for closed request
+            message = "your complain have been submitted to the request";
+        }
+        return message;
     }
 }

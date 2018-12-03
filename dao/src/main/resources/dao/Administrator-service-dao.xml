@@ -14,7 +14,7 @@
 
             <prop key="modify.FormType">
                 <![CDATA[
-                   Update FormType where Form_tpye=modified_type where id=x
+                   Update Form where Form_tpye=modified_type where id=:form_id
                 ]]>
 
             </prop>

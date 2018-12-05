@@ -39,6 +39,7 @@ public class StudentServiceDaoTest {
 
     }*/
 
+    /*
     @Test
     public void createRequestTest() {
         Form savedRequest = studentServiceDao.createRequest(1,2,3, "REQUESTED", "RETAKE_EXAM");
@@ -46,7 +47,7 @@ public class StudentServiceDaoTest {
         assertEquals(savedRequest.getRequestID(), requestFromDb.getRequestID());
         assertEquals(savedRequest.getStudentID(), requestFromDb.getStudentID());
     }
-
+*/
     @Test
     public void findAllRequestsTest() {
         List<Form> allRequests = studentServiceDao.findAllForms();

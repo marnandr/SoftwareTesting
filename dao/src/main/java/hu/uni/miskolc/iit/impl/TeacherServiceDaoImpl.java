@@ -2,6 +2,7 @@ package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.TeacherServiceDao;
 import hu.uni.miskolc.iit.exceptions.FormDoesNotExistException;
+import hu.uni.miskolc.iit.exceptions.FormNotFoundException;
 import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.model.FormTypes;
 import hu.uni.miskolc.iit.persist.AbstractJdbc;
@@ -49,7 +50,7 @@ public class TeacherServiceDaoImpl extends AbstractJdbc implements TeacherServic
     }
 
     @Override
-    public List<Form> findThatTeachersForms(String teacherID) throws FormDoesNotExistException {
+    public List<Form> findThatTeachersForms(String teacherID) throws FormNotFoundException {
         List<Form> theirForms = new ArrayList<>();
         boolean exists = false;
         for (Form form : myForms){
@@ -60,10 +61,27 @@ public class TeacherServiceDaoImpl extends AbstractJdbc implements TeacherServic
         }
 
         if(!exists){
-            throw new FormDoesNotExistException();
+            throw new FormNotFoundException();
         }
         return theirForms;
 
+    }
+
+    @Override
+    public List<Form> findFormsByCourse(String course_id) throws FormNotFoundException {
+        List<Form> formsToReturn = new ArrayList<>();
+        boolean exists = false;
+        for (Form form : myForms){
+            if(form.getCourseID()==course_id){
+                exists=true;
+                formsToReturn.add(form);
+            }
+        }
+
+        if(!exists){
+            throw new FormNotFoundException();
+        }
+        return formsToReturn;
     }
 
 

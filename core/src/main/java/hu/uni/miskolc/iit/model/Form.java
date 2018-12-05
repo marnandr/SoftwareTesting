@@ -35,7 +35,8 @@ public class Form {
         formHistory = new History(st, FormAction.REQUESTED);
     }
 
-    public Form(String st, String t, String c, String txt, FormTypes formType) {
+    public Form(int id, String st, String t, String c, String txt, FormTypes formType) {
+        form_id = id;
         studentID = st;
         teacherID = t;
         courseID = c;

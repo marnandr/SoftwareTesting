@@ -1,6 +1,7 @@
 package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.TeacherServiceDao;
+import hu.uni.miskolc.iit.exceptions.FormAlreadyExistsExeption;
 import hu.uni.miskolc.iit.exceptions.FormDoesNotExistException;
 import hu.uni.miskolc.iit.exceptions.FormNotFoundException;
 import hu.uni.miskolc.iit.model.Form;
@@ -19,12 +20,13 @@ public class TeacherServiceDaoImpl extends AbstractJdbc implements TeacherServic
     @Autowired
     @Qualifier(value = "teacherServiceDao")
     private Properties sqlStatements;
-    private List<Form> myForms = new ArrayList<>();
+    private List<Form> myForms;
 
 
     public TeacherServiceDaoImpl(){
-        myForms.add(new Form("abc111","teacher1","matek101","please let me retake the exam", FormTypes.RETAKE_EXAM));
-        myForms.add(new Form("abc112","teacher2","matek102","please let me retake the class", FormTypes.RETAKE_LECTURE));
+        myForms = new ArrayList<>();
+        myForms.add(new Form(1,"abc111","teacher1","matek101","please let me retake the exam", FormTypes.RETAKE_EXAM));
+        myForms.add(new Form(2,"abc112","teacher1","matek102","please let me retake the class", FormTypes.RETAKE_LECTURE));
     }
 
     @Override
@@ -82,6 +84,22 @@ public class TeacherServiceDaoImpl extends AbstractJdbc implements TeacherServic
             throw new FormNotFoundException();
         }
         return formsToReturn;
+    }
+
+    @Override
+    public void createForm(int id, String st, String t, String c, String txt, FormTypes formType) throws FormAlreadyExistsExeption {
+        if(myForms.size()>0){
+            for(Form form:myForms ){
+                if(form.getForm_id()==id){
+                    throw new FormAlreadyExistsExeption();
+                }
+            }
+            myForms.add(new Form(id,st,t,c,txt,formType));
+        }
+        else{
+            myForms.add(new Form(id,st,t,c,txt,formType));
+        }
+
     }
 
 

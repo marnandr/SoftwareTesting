@@ -67,17 +67,20 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     /**
      * create the new request
      *
-     * @param Request_ID
-     * @param Student_ID
-     * @param Teacher_ID
-     * @param Request_Status
-     * @param Request_Description
+     * //@param Request_ID
+     * //@param Student_ID
+     * //@param Teacher_ID
+     * //@param Request_Status
+     * //@param Request_Description
      */
+
     public Form createRequest(int Request_ID, int Student_ID, int Teacher_ID, String Request_Status, String Request_Description) {
-        String INSERT_SQL = "INSERT INTO Student_Request(Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description) values(?,?,?,?,?)";
+        /*String INSERT_SQL = "INSERT INTO Student_Request(Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description) values(?,?,?,?,?)";
         jdbcTemplateObject.update(INSERT_SQL, Request_ID, Student_ID, Teacher_ID, Request_Status, Request_Description);
         Request request = new Request();
-        return request;
+        */
+        return null;
+
     }
 
     @Override

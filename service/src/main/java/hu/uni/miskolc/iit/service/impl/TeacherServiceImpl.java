@@ -15,8 +15,11 @@ import java.util.List;
 @Service
 public class TeacherServiceImpl implements TeacherService {
 
-    @Autowired
     TeacherServiceDao teacherServiceDao;
+
+    public TeacherServiceImpl(TeacherServiceDao teacherServiceDao){
+        this.teacherServiceDao = teacherServiceDao;
+    }
 
     @Override
     public List<Form> getForms() {

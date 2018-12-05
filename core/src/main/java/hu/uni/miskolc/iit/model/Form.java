@@ -18,7 +18,7 @@ public class Form {
 
     private String teacherID;
     private String studentID;
-    private String CourseID;
+    private String courseID;
 
     public Form() {
     }
@@ -33,6 +33,15 @@ public class Form {
         currentState = formState.OPEN;
         //first element in the form history, always "REQUESTED" and the student is the actor
         formHistory = new History(st, FormAction.REQUESTED);
+    }
+
+    public Form(String st, String t, String c, String txt, FormTypes formType) {
+        studentID = st;
+        teacherID = t;
+        courseID = c;
+        text = txt;
+        this.formType = formType;
+        currentState = formState.OPEN;
     }
 
     @Override
@@ -122,11 +131,11 @@ public class Form {
     }
 
     public String getCourseID() {
-        return CourseID;
+        return courseID;
     }
 
     public void setCourseID(String courseID) {
-        CourseID = courseID;
+        courseID = courseID;
     }
 
     public int getForm_id() {

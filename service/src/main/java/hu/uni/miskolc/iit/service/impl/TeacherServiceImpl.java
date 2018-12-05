@@ -20,7 +20,6 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public Form forwardForm(String teacherID) {
-        return null;
+    public void forwardForm(String teacherID) {
     }
 }

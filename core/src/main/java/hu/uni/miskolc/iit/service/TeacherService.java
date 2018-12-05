@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface TeacherService {
     List<Form> getForms();
-    Form forwardForm(String teacherID);
+    void forwardForm(String teacherID);
 }

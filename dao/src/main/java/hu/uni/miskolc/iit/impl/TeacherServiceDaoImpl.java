@@ -1,7 +1,9 @@
 package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.TeacherServiceDao;
+import hu.uni.miskolc.iit.exceptions.FormDoesNotExistException;
 import hu.uni.miskolc.iit.model.Form;
+import hu.uni.miskolc.iit.model.FormTypes;
 import hu.uni.miskolc.iit.persist.AbstractJdbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,27 +11,59 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public class TeacherServiceDaoImpl extends AbstractJdbc implements TeacherServiceDao {
 
     @Autowired
     @Qualifier(value = "teacherServiceDao")
     private Properties sqlStatements;
+    private List<Form> myForms = new ArrayList<>();
 
 
-    @Override
-    public List<Form> getForms() {
-
-
-        String sql = sqlStatements.getProperty("select.all.forms");
-        return this.getJdbc().query(sql, new TeacherServiceDaoImpl.TeacherFormsMapper());
+    public TeacherServiceDaoImpl(){
+        myForms.add(new Form("abc111","teacher1","matek101","please let me retake the exam", FormTypes.RETAKE_EXAM));
+        myForms.add(new Form("abc112","teacher2","matek102","please let me retake the class", FormTypes.RETAKE_LECTURE));
     }
 
     @Override
-    public Form forwardForm(String teacherID) {
-        return null;
+    public List<Form> getForms() {
+        //String sql = sqlStatements.getProperty("select.all.forms");
+        //return this.getJdbc().query(sql, new TeacherServiceDaoImpl.TeacherFormsMapper());
+
+        return myForms;
+    }
+
+    @Override
+    public void forwardForm(int form_id, String teacherID) throws FormDoesNotExistException {
+        boolean exists = false;
+        for (Form form : myForms){
+            if(form.getForm_id()==form_id){
+                exists=true;
+                form.setTeacherID(teacherID);
+            }
+        }
+        if(!exists){
+            throw new FormDoesNotExistException();
+        }
+    }
+
+    @Override
+    public List<Form> findThatTeachersForms(String teacherID) throws FormDoesNotExistException {
+        List<Form> theirForms = new ArrayList<>();
+        boolean exists = false;
+        for (Form form : myForms){
+            if(form.getTeacherID()==teacherID){
+                exists=true;
+                theirForms.add(form);
+            }
+        }
+
+        if(!exists){
+            throw new FormDoesNotExistException();
+        }
+        return theirForms;
+
     }
 
 

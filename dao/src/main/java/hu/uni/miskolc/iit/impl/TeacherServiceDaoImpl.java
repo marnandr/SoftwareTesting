@@ -27,6 +27,11 @@ public class TeacherServiceDaoImpl extends AbstractJdbc implements TeacherServic
         return this.getJdbc().query(sql, new TeacherServiceDaoImpl.TeacherFormsMapper());
     }
 
+    @Override
+    public Form forwardForm(String teacherID) {
+        return null;
+    }
+
 
     class TeacherFormsMapper implements RowMapper<Form> {
 

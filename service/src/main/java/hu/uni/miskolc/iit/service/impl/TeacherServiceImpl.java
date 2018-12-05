@@ -18,4 +18,9 @@ public class TeacherServiceImpl implements TeacherService {
     public List<Form> getForms() {
         return teacherServiceDao.getForms();
     }
+
+    @Override
+    public Form forwardForm(String teacherID) {
+        return null;
+    }
 }

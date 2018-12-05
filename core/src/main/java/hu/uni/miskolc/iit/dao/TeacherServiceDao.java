@@ -7,4 +7,5 @@ import java.util.List;
 public interface TeacherServiceDao {
 
     List<Form> getForms();
+    Form forwardForm(String teacherID);
 }

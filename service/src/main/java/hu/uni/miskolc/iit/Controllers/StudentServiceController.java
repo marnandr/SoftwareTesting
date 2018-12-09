@@ -36,16 +36,17 @@ public class StudentServiceController {
     @PostMapping(path = "/CheckRequestStatus", consumes = "application/json")
     public ResponseEntity<?> checkRequestStatus(int requestid, boolean status){
         try {
-            return ResponseEntity.ok(studentService.checkRequestStatus(requestid,status));
+            return ResponseEntity.ok(studentService.checkRequestStatus(requestid));
         } catch (RequestDoesNotExistException e) {
             return (ResponseEntity<?>) ResponseEntity.noContent();
         }
     }
 
     @PostMapping(path = "/makeComplaint", consumes = "application/json")
-    public ResponseEntity<?> makeComplain(int ComplainID, int RequestID, String Complain){
+    public ResponseEntity<?> makeComplain(int ComplainID, int RequestID, String Complain) throws RequestDoesNotExistException {
         try {
-            return ResponseEntity.ok(studentService.createComplain(ComplainID, RequestID, Complain));
+            studentService.createComplain(RequestID, Complain);
+            return (ResponseEntity<?>) ResponseEntity.ok();
         } catch (ComplainAlreadyExistsException e) {
             return (ResponseEntity<?>) ResponseEntity.badRequest();
         }

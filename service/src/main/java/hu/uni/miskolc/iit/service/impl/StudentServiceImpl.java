@@ -1,6 +1,7 @@
 package hu.uni.miskolc.iit.service.impl;
 
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
+import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
 import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
 import hu.uni.miskolc.iit.model.Course;
 import hu.uni.miskolc.iit.service.StudentService;
@@ -26,12 +27,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public boolean checkRequestStatus(int requestid,boolean status) throws RequestDoesNotExistException {
-        return studentServiceDao.checkRequestStatus( requestid, status);
+    public String checkRequestStatus(int requestid) throws RequestDoesNotExistException {
+        return studentServiceDao.checkRequestStatus(requestid);
     }
 
     @Override
-    public boolean createComplain(int complainID, int requestID, String complain) {
-        return studentServiceDao.createComplain(complainID, requestID, complain);
+    public void createComplain(int requestID, String complain) throws ComplainAlreadyExistsException, RequestDoesNotExistException {
+        studentServiceDao.createComplain(requestID, complain);
     }
 }

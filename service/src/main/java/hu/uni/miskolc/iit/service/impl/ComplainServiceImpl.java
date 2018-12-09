@@ -4,6 +4,7 @@ package hu.uni.miskolc.iit.service.impl;
 
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
 import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
+import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
 import hu.uni.miskolc.iit.service.ComplainService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,9 +30,8 @@ public class ComplainServiceImpl implements ComplainService {
         }
 
         @Override
-        public boolean createComplain(int ComplainID, int RequestID, String Complain) throws ComplainAlreadyExistsException {
-
-            return studentServiceDao.createComplain(ComplainID, RequestID, Complain);
+        public void createComplain(int RequestID, String Complain) throws RequestDoesNotExistException, ComplainAlreadyExistsException {
+            studentServiceDao.createComplain(RequestID, Complain);
         }
 
     }

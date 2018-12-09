@@ -10,7 +10,7 @@ public interface StudentService{
 
     public List<Course> getAllCourses();
 
-    public boolean checkRequestStatus(int requestid,boolean status) throws RequestDoesNotExistException;
+    public String checkRequestStatus(int requestid) throws RequestDoesNotExistException;
 
-    public boolean createComplain(int complainID, int requestID, String complain) throws ComplainAlreadyExistsException;
+    public void createComplain(int requestID, String complain) throws ComplainAlreadyExistsException, RequestDoesNotExistException;
 }

@@ -4,23 +4,23 @@ public class StudentRequestComplain
 {
 
     private int requestId;
-    private String complain;
+    private String complaint;
     private int id;
 
-    public StudentRequestComplain(int requestId, String complain, int id)
+    public StudentRequestComplain(int requestId, String complaint, int id)
     {
         this.requestId = requestId;
-        this.complain = complain;
+        this.complaint = complaint;
         this.id = id;
     }
 
 
     public String getComplain() {
-        return complain;
+        return complaint;
     }
 
     public void setComplain(String complain) {
-        this.complain = complain;
+        this.complaint = complain;
     }
 
     public int getId() {

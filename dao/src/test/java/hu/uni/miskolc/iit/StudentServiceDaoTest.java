@@ -2,22 +2,24 @@ package hu.uni.miskolc.iit;
 
 
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
+import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
 import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
 import hu.uni.miskolc.iit.impl.StudentServiceDaoImpl;
 import hu.uni.miskolc.iit.model.Course;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(classes={Config.class})
 public class StudentServiceDaoTest {
 
     private StudentServiceDao studentServiceDao = new StudentServiceDaoImpl();
@@ -46,13 +48,13 @@ public class StudentServiceDaoTest {
 
     @Test
     public void checkRequestStatus() throws RequestDoesNotExistException {
-       boolean requests = studentServiceDao.checkRequestStatus(2, true);
-       assertTrue(requests);
+       String str = studentServiceDao.checkRequestStatus(2);
+       assertTrue(str == "status");
     }
 
     @Test
-    public void createComplain() {
-        studentServiceDao.createComplain(3,3, "Long complaint text");
+    public void createComplain() throws RequestDoesNotExistException, ComplainAlreadyExistsException {
+        studentServiceDao.createComplain(3, "Long complaint text");
         assertTrue(true);
     }
 

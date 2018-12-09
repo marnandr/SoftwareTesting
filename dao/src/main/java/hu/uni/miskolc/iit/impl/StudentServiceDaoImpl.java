@@ -1,6 +1,7 @@
 package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
+import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
 import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
 import hu.uni.miskolc.iit.model.Course;
 import hu.uni.miskolc.iit.model.Form;
@@ -43,6 +44,15 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
     }
 
     @Override
+    public String checkRequestStatus(int requestid) throws RequestDoesNotExistException {
+        return null;
+    }
+
+    @Override
+    public void createComplain(int requestID, String complain) throws ComplainAlreadyExistsException, IllegalArgumentException {
+
+    }
+
     public boolean checkRequestStatus(int requestid, boolean status) throws RequestDoesNotExistException {
         String sql = sqlStatements.getProperty("select.requeststatus");
         List<Request> requests =this.getJdbc().query(sql, new CheckRequestsStatusMapper());
@@ -86,7 +96,6 @@ public class StudentServiceDaoImpl extends AbstractJdbc implements StudentServic
 
     }
 
-        @Override
         public boolean createComplain(int complainID, int requestID, String complain) throws DataAccessException {
             String sql = sqlStatements.getProperty("insert.complaint");
 

@@ -1,25 +1,22 @@
 package hu.uni.miskolc.iit.model;
 
-import javax.validation.constraints.NotNull;
 
 public class User {
 
-    @NotNull
+
     private String lastName;
 
-    @NotNull
+
     private String firstName;
 
-    @NotNull
+
     private String password;
 
-    @NotNull
     private String neptunCode;
 
-    @NotNull
+
     private String email;
 
-    @NotNull
     private long phoneNumber;
 
 

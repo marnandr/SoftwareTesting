@@ -9,17 +9,13 @@ import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.model.Request;
 import hu.uni.miskolc.iit.service.AdministratorService;
 import hu.uni.miskolc.iit.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
-@Service
 public class AdministratorServiceImpl implements AdministratorService {
 
 
-    @Autowired
     AdministratorServiceDao administratorServiceDao;
 
     @Override

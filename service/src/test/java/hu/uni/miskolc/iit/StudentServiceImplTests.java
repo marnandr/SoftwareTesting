@@ -6,20 +6,14 @@ import hu.uni.miskolc.iit.model.Request;
 import hu.uni.miskolc.iit.service.StudentService;
 import hu.uni.miskolc.iit.service.impl.StudentServiceImpl;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 import static  org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class StudentServiceImplTests {
-
+/*
     private StudentService studentService = new StudentServiceImpl();
 
     @Test
@@ -52,5 +46,6 @@ public class StudentServiceImplTests {
     @Test
     public void checkRequestStatus() {
     }
+    */
 
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-2" standalone="no"?>
+<DB>
+    <requests>
+        <request>
+            <requestID>0</requestID>
+            <studentID>0</studentID>
+            <requestDate>December 10, 2000</requestDate>
+            <teacherID>0</teacherID>
+            <requestStatus>Accepted</requestStatus>
+            <description>Nem tudom</description>
+            <courseID>0</courseID>
+            <formID>0</formID>
+        </request>
+
+        <request>
+            <requestID>1</requestID>
+            <studentID>1</studentID>
+            <requestDate>November 10, 1999</requestDate>
+            <teacherID>1</teacherID>
+            <requestStatus>Accepted</requestStatus>
+            <description>ASd</description>
+            <courseID>1</courseID>
+            <formID>1</formID>
+        </request>
+
+        <request>
+            <requestID>2</requestID>
+            <studentID>2</studentID>
+            <requestDate>October 13, 1999</requestDate>
+            <teacherID>2</teacherID>
+            <requestStatus>Denied</requestStatus>
+            <description>asd</description>
+            <courseID>2</courseID>
+            <formID>2</formID>
+        </request>
+    </requests>
+    <complaints>
+        <complaint>
+            <requestID>0</requestID>
+            <complaintText>Ezt sem tudom</complaintText>
+            <ID>0</ID>
+        </complaint>
+
+        <complaint>
+            <requestID>1</requestID>
+            <complaintText>Ez asd</complaintText>
+            <ID>1</ID>
+        </complaint>
+
+        <complaint>
+            <requestID>2</requestID>
+            <complaintText>Ez is asd</complaintText>
+            <ID>2</ID>
+        </complaint>
+    </complaints>
+</DB>

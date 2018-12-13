@@ -1,6 +1,10 @@
-package hu.uni.miskolc.iit.Controllers;
+package hu.uni.miskolc.iit.controller;
 
 
+import hu.uni.miskolc.iit.exceptions.FormAlreadyExistsExeption;
+import hu.uni.miskolc.iit.exceptions.FormDoesNotExistException;
+import hu.uni.miskolc.iit.exceptions.FormNotFoundException;
+import hu.uni.miskolc.iit.model.FormTypes;
 import hu.uni.miskolc.iit.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,23 +27,23 @@ public class TeacherServiceController {
     }
 
     @PostMapping(path = "/forwardForm", consumes = "application/json")
-    public ResponseEntity<?> forwardForm(int form_id, String teacherID){
-        return ResponseEntity.ok(teacherService.forwardForm(form_id, teacherID));
+    public void forwardForm(int form_id, String teacherID) throws FormDoesNotExistException {
+        teacherService.forwardForm(form_id, teacherID);
     }
 
     @PostMapping(path = "/findThatTeachersForm", consumes = "application/json")
-    public ResponseEntity<?> findThatTeachersForms(String teacherID){
-        return ResponseEntity.ok(teacherService.findThatTeachersForms(teacherID));
+    public void findThatTeachersForms(String teacherID) throws FormNotFoundException {
+        teacherService.findThatTeachersForms(teacherID);
     }
 
     @PostMapping(path = "/findFormsByCourse", consumes = "application/json")
-    public ResponseEntity<?> findFormsByCourse(String course_id){
-        return ResponseEntity.ok(teacherService.findFormsByCourse(course_id));
+    public void findFormsByCourse(String course_id) throws FormNotFoundException {
+        teacherService.findFormsByCourse(course_id);
     }
 
     @PostMapping(path = "/createForm", consumes = "application/json")
-    public ResponseEntity<?> createForm(int id, String st, String t, String c, String txt, FormTypes formType){
-        return ResponseEntity.ok(teacherService.createForm(id,st,t,c,txt,formType));
+    public void createForm(int id, String st, String t, String c, String txt, FormTypes formType) throws FormAlreadyExistsExeption {
+        teacherService.createForm(id,st,t,c,txt,formType);
     }
 
 

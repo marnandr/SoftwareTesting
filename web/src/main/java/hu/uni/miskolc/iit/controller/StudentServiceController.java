@@ -1,4 +1,4 @@
-package hu.uni.miskolc.iit.Controllers;
+package hu.uni.miskolc.iit.controller;
 
 import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
 import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;

@@ -3,20 +3,11 @@ package hu.uni.miskolc.iit.model;
 
 public class User {
 
-
     private String lastName;
-
-
     private String firstName;
-
-
     private String password;
-
     private String neptunCode;
-
-
     private String email;
-
     private long phoneNumber;
 
 

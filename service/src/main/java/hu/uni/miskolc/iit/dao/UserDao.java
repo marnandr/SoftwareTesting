@@ -9,11 +9,9 @@ import java.util.List;
 
 public interface UserDao {
 
-    void createUser(User user) throws UserAlreadyExistException, IllegalArgumentException;
+    void createUser(String lastName, String firstName, String password, String neptunCode, String email, long phoneNumber) throws UserAlreadyExistException, IllegalArgumentException;
     void deleteUser(String userID) throws UserDoesNotExistException;
-    void modifyUser(String userID) throws UserAlreadyExistException, IllegalArgumentException;
+    void modifyUser(User user) throws UserDoesNotExistException, IllegalArgumentException;
     List<User> getAllUsers();
-    List<User> findUserByID(String userID) throws UserDoesNotExistException;
-    List<User> searchUserByCourse (String courseID) throws CourseDoesNotExistException;
-
+    User findUserByID(String userID) throws UserDoesNotExistException;
 }

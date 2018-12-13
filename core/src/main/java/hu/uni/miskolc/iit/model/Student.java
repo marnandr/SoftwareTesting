@@ -7,6 +7,10 @@ public class Student extends User {
     private Date startOfStudies;
     private Faculty faculty;
 
+    public Student(String lastName, String firstName, String password, String neptunCode, String email, long phoneNumber){
+        super(lastName, firstName, password, neptunCode, email, phoneNumber);
+    }
+
     public Student(String lastName, String firstName, String password, String neptunCode, String email, long phoneNumber, Date startOfStudies, Faculty factulty) {
         super(lastName, firstName, password, neptunCode, email, phoneNumber);
         this.faculty = factulty;

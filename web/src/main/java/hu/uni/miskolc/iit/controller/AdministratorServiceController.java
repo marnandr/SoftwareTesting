@@ -1,4 +1,4 @@
-package hu.uni.miskolc.iit.Controllers;
+package hu.uni.miskolc.iit.controller;
 
 import hu.uni.miskolc.iit.service.AdministratorService;
 import hu.uni.miskolc.iit.service.StudentService;

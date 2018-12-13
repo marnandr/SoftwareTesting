@@ -1,51 +1,70 @@
 package hu.uni.miskolc.iit;
 
+import hu.uni.miskolc.iit.dao.StudentServiceDao;
+import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
+import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
 import hu.uni.miskolc.iit.model.Course;
 import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.model.Request;
 import hu.uni.miskolc.iit.service.StudentService;
 import hu.uni.miskolc.iit.service.impl.StudentServiceImpl;
+import junit.framework.AssertionFailedError;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 import static  org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 
 public class StudentServiceImplTests {
-/*
-    private StudentService studentService = new StudentServiceImpl();
 
-    @Test
-    public void getAllCoursesTest() {
-        List<Course> allCourses = studentService.getAllCourses();
-        assertTrue(allCourses.size() > 0);
+    @Mock
+    StudentServiceDao studentServiceDaoMock;
+
+    @InjectMocks
+    StudentServiceImpl studentService;
+
+    public StudentServiceImplTests(){
+        super();
     }
 
-
-    @Test
-    public void getAllFormsTest() {
-        List<Form> allForms  = studentService.getAllForms();
-        assertTrue(allForms.size() > 0);
-    }
-
-    @Test
-    public void createNewRequestTest() {
-        Request savedRequest = studentService.createNewRequest(1,2,3, "REQUESTED", "RETAKE_EXAM");
-        //Request requestFromDb = studentService.getRequestById(savedRequest.getRequestID());
-        //assertEquals(savedRequest.getRequestID(), requestFromDb.getRequestID());
-        //assertEquals(savedRequest.getStudentID(), requestFromDb.getStudentID());
+    @Before
+    public void init() throws Exception {
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void getAllRequestsTest() {
-        //List<Request> allRequests = studentService.getAllRequest();
-        //assertTrue(allRequests.size() > 0);
+    public void checkRequestStatusValidInputs()
+    {
+        try {
+            doReturn("Denied").when(studentServiceDaoMock).checkRequestStatus(0);
+            assertEquals( "Denied" ,studentService.checkRequestStatus(0));
+        } catch (RequestDoesNotExistException e) {
+            throw new AssertionFailedError();
+        }
     }
 
-    @Test
-    public void checkRequestStatus() {
+    @Test(expected = RequestDoesNotExistException.class)
+    public void checkRequestStatusRequestDoesNotExist() throws RequestDoesNotExistException {
+        doThrow(new RequestDoesNotExistException()).when(studentServiceDaoMock).checkRequestStatus(0);
+        studentService.checkRequestStatus(0);
     }
-    */
 
+    @Test(expected = RequestDoesNotExistException.class)
+    public void createComplainRequestDoesNotExist() throws RequestDoesNotExistException, ComplainAlreadyExistsException {
+        doThrow(new RequestDoesNotExistException()).when(studentServiceDaoMock).createComplain(0, "pistike");
+        studentService.createComplain(0, "pistike");
+    }
+
+    @Test(expected = ComplainAlreadyExistsException.class)
+    public void createComplainComplainAlreadyExists() throws RequestDoesNotExistException, ComplainAlreadyExistsException {
+        doThrow(new ComplainAlreadyExistsException()).when(studentServiceDaoMock).createComplain(0, "pistike");
+        studentService.createComplain(0, "pistike");
+    }
 }

@@ -191,11 +191,6 @@ public class StudentServiceDaoFileImpl implements StudentServiceDao {
             document = db.parse(is);
             NodeList nodeList = document.getElementsByTagName("complaints");
 
-            if(nodeList.getLength() == 0 || nodeList.getLength() > 1)
-            {
-                //throw new ;
-            }
-
             Element root = (Element)nodeList.item(0);
 
             Element complaintElem = document.createElement("complaint");

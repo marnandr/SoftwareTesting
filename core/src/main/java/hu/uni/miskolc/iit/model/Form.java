@@ -122,7 +122,7 @@ public class Form {
     }
 
     public String getCourseID() {
-        return course.getCode();
+        return course.getCourseID();
     }
 
     public void setCourseID(String courseID) {

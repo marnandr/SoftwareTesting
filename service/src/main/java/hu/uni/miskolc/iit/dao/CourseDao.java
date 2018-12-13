@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface CourseDao {
 
-    void createCourse(String code, String name, String desciption, String teacherID) throws CourseAlreadyExistException, TeacherNotFoundException;
+    void createCourse(String courseID, String name, String desciption, String teacherID) throws CourseAlreadyExistException, TeacherNotFoundException;
     void modifyCourse(Course course) throws CourseDoesNotExistException, TeacherNotFoundException;
     void deleteCourse(String courseID) throws CourseDoesNotExistException;
     Course findCourseByID(String courseID) throws CourseDoesNotExistException;

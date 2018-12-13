@@ -3,7 +3,7 @@ package hu.uni.miskolc.iit.model;
 public class Course {
 
 
-    private String code;
+    private String courseID;
     private String name;
     private String description;
     private String teacherID;
@@ -11,19 +11,19 @@ public class Course {
     public Course() {
     }
 
-    public Course(String code, String name, String desciption, String teacherID) {
-        this.code = code;
+    public Course(String courseID, String name, String desciption, String teacherID) {
+        this.courseID = courseID;
         this.name = name;
         this.description = desciption;
         this.teacherID = teacherID;
     }
 
-    public String getCode() {
-        return code;
+    public String getCourseID() {
+        return courseID;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCode(String courseID) {
+        this.courseID = courseID;
     }
 
     public String getName() {
@@ -42,13 +42,14 @@ public class Course {
         this.description = description;
     }
 
-    public String getTeacher() {
+    public String getTeacherID() {
         return teacherID;
     }
 
-    public void setTeacher(String teacherID) {
+    public void setTeacherID(String teacherID) {
         this.teacherID = teacherID;
     }
+
 
     public void checkCode(String code) {
         if (code == null) {

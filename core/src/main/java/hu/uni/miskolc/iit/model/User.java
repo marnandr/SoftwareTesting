@@ -10,7 +10,6 @@ public class User {
     private String email;
     private long phoneNumber;
 
-
     public User(String lastName, String firstName, String password, String neptunCode, String email, long phoneNumber) {
         checkName(lastName);
         this.lastName = lastName;

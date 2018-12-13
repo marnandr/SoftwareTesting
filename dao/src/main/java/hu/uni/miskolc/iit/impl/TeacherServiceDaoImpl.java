@@ -6,13 +6,11 @@ import hu.uni.miskolc.iit.exceptions.FormDoesNotExistException;
 import hu.uni.miskolc.iit.exceptions.FormNotFoundException;
 import hu.uni.miskolc.iit.model.Form;
 import hu.uni.miskolc.iit.model.FormTypes;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.*;
 
 public class TeacherServiceDaoImpl implements TeacherServiceDao {
 
-    private Properties sqlStatements;
     private List<Form> myForms;
 
 
@@ -22,9 +20,6 @@ public class TeacherServiceDaoImpl implements TeacherServiceDao {
 
     @Override
     public List<Form> getForms() {
-        //String sql = sqlStatements.getProperty("select.all.forms");
-        //return this.getJdbc().query(sql, new TeacherServiceDaoImpl.TeacherFormsMapper());
-
         return myForms;
     }
 
@@ -32,7 +27,7 @@ public class TeacherServiceDaoImpl implements TeacherServiceDao {
     public void forwardForm(int form_id, String teacherID) throws FormDoesNotExistException {
         boolean exists = false;
         for (Form form : myForms){
-            if(form.getForm_id()==form_id){
+            if(form.getFormID()==form_id){
                 exists=true;
                 form.setTeacherID(teacherID);
             }
@@ -82,7 +77,7 @@ public class TeacherServiceDaoImpl implements TeacherServiceDao {
         /*
         if(myForms.size()>0){
             for(Form form:myForms ){
-                if(form.getForm_id()==id){
+                if(form.getFormID()==id){
                     throw new FormAlreadyExistsExeption();
                 }
             }

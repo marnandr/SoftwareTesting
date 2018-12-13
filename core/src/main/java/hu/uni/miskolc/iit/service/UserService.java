@@ -1,7 +1,6 @@
 package hu.uni.miskolc.iit.service;
 
 import hu.uni.miskolc.iit.exceptions.*;
-import hu.uni.miskolc.iit.model.*;
 
 public interface UserService {
     /**
@@ -10,7 +9,7 @@ public interface UserService {
      * @param email
      * @param password
      */
-    public void userRegistration(String lastName, String firstName, String email, String password) throws UserAlreadyExist;
+    public void userRegistration(String lastName, String firstName, String email, String password) throws UserAlreadyExistException;
 
     /**
      * @param user
@@ -25,11 +24,11 @@ public interface UserService {
      * @param email
      * @param password
      */
-    public void userModification(String lastName, String firstName, String email, String password) throws UserDoesNotExist;
+    public void userModification(String lastName, String firstName, String email, String password) throws UserDoesNotExistException;
 
     /**
      * @param user
      */
-    public void userDelete(String user) throws UserDoesNotExist;
+    public void userDelete(String user) throws UserDoesNotExistException;
 
 }

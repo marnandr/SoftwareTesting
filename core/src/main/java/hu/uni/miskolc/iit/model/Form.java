@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Form {
-    private int form_id;
+    private int formID;
     private Student student;
     private Teacher teacher;
     private Course course;
@@ -22,31 +22,18 @@ public class Form {
     public Form() {
     }
 
-    public Form(Student student, Teacher teacher, Course course, String text, Date date, FormTypes formType) {
+    public Form(int formID, Student student, Teacher teacher, Course course, String text, FormTypes formType) {
+        this.formID = formID;
+        this.student = student;
         this.teacher = teacher;
         this.course = course;
         this.text = text;
-        this.date = date;
         this.formType = formType;
         currentState = formState.OPEN;
         //first element in the form history, always "REQUESTED" and the student is the actor
         formHistory = new ArrayList<>();
-        formHistory.add(new Action(student.getNeptunCode(),Action.FormAction.REQUESTED));
+        //formHistory.add(new Action(student.getNeptunCode(),Action.FormAction.REQUESTED));
     }
-
-    /*
-    public Form(int id, String studentID, String teacherID, String courseID, String text, FormTypes formType) {
-        form_id = id;
-        student.setNeptunCode(studentID);
-        teacher.setNeptunCode(teacherID);
-        course.setCode(courseID);
-        this.text = text;
-        this.formType = formType;
-        currentState = formState.OPEN;
-        formHistory = new ArrayList<>();
-        formHistory.add(new Action(student.getNeptunCode(),Action.FormAction.REQUESTED));
-    }
-*/
 
     @Override
     public String toString() {
@@ -135,19 +122,19 @@ public class Form {
     }
 
     public String getCourseID() {
-        return course.getCode();
+        return course.getCourseID();
     }
 
     public void setCourseID(String courseID) {
         this.course.setCode(courseID);
     }
 
-    public int getForm_id() {
-        return form_id;
+    public int getFormID() {
+        return formID;
     }
 
-    public void setForm_id(int form_id) {
-        this.form_id = form_id;
+    public void setFormID(int formID) {
+        this.formID = formID;
     }
 
 

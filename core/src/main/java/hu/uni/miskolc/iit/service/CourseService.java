@@ -2,7 +2,7 @@ package hu.uni.miskolc.iit.service;
 
 import hu.uni.miskolc.iit.model.Course;
 import hu.uni.miskolc.iit.exceptions.CourseAlreadyExistException;
-import hu.uni.miskolc.iit.exceptions.CourseDoesntExist;
+import hu.uni.miskolc.iit.exceptions.CourseDoesNotExistException;
 import hu.uni.miskolc.iit.exceptions.ListNotFound;
 
 import java.util.Collection;
@@ -28,12 +28,12 @@ public interface CourseService {
      * @param teacherID
      * @return
      */
-    public boolean courseModification(String courseName, String description, int teacherID) throws CourseDoesntExist;
+    public boolean courseModification(String courseName, String description, int teacherID) throws CourseDoesNotExistException;
 
     /**
      * @param courseName
      * @return
      */
-    public boolean courseDelete(String courseName) throws CourseDoesntExist;
+    public boolean courseDelete(String courseName) throws CourseDoesNotExistException;
 
 }

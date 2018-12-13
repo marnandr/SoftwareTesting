@@ -1,6 +1,9 @@
 package hu.uni.miskolc.iit.service.impl;
 
+import hu.uni.miskolc.iit.dao.CourseDao;
+import hu.uni.miskolc.iit.dao.FormDao;
 import hu.uni.miskolc.iit.dao.TeacherServiceDao;
+import hu.uni.miskolc.iit.dao.UserDao;
 import hu.uni.miskolc.iit.exceptions.FormAlreadyExistsExeption;
 import hu.uni.miskolc.iit.exceptions.FormDoesNotExistException;
 import hu.uni.miskolc.iit.exceptions.FormNotFoundException;
@@ -12,15 +15,17 @@ import java.util.List;
 
 public class TeacherServiceImpl implements TeacherService {
 
-    TeacherServiceDao teacherServiceDao;
+    FormDao formDao;
+    CourseDao courseDao;
+    UserDao userDao;
 
-    public TeacherServiceImpl(TeacherServiceDao teacherServiceDao){
-        this.teacherServiceDao = teacherServiceDao;
+    public TeacherServiceImpl(){
+
     }
 
     @Override
     public List<Form> getForms() {
-        return teacherServiceDao.getForms();
+        return null;
     }
 
     @Override

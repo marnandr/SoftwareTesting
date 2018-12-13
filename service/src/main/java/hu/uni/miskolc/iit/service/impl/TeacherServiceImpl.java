@@ -25,22 +25,22 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void forwardForm(int form_id, String teacherID) throws FormDoesNotExistException {
-        teacherServiceDao.forwardForm(form_id, teacherID);
+        //teacherServiceDao.forwardForm(form_id, teacherID);
     }
 
     @Override
     public List<Form> findThatTeachersForms(String teacherID) throws FormNotFoundException {
-        return teacherServiceDao.findThatTeachersForms(teacherID);
+        return null; //teacherServiceDao.findThatTeachersForms(teacherID);
     }
 
     @Override
     public List<Form> findFormsByCourse(String course_id) throws FormNotFoundException {
-        return teacherServiceDao.findFormsByCourse(course_id);
+        return null; //teacherServiceDao.findFormsByCourse(course_id);
     }
 
     @Override
     public void createForm(int id, String st, String t, String c, String txt, FormTypes formType) throws FormAlreadyExistsExeption {
-        teacherServiceDao.createForm(id,st,t,c,txt,formType);
+        //teacherServiceDao.createForm(id,st,t,c,txt,formType);
     }
 
 

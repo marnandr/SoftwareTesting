@@ -42,17 +42,8 @@ public class TeacherServiceController {
     }
 
     @PostMapping(path = "/createForm", consumes = "application/json")
-    public void createForm(int id, String st, String t, String c, String txt, FormTypes formType) throws FormAlreadyExistsExeption {
-        teacherService.createForm(id,st,t,c,txt,formType);
+    public void createForm(int id, String student, String teacher, String course, String text, FormTypes formType) throws FormAlreadyExistsExeption {
+        teacherService.createForm(id,student,teacher,course,text,formType);
     }
-
-
-
-
-
-
-
-
-
 
 }

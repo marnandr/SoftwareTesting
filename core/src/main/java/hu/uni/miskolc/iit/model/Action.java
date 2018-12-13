@@ -1,31 +1,37 @@
 package hu.uni.miskolc.iit.model;
 
 /*
-Maybe not the best name choice. This class contains the actor (User) and their action on the Form
-Used in the History class.
+This class contains the actor (User) and their action on the Form
  */
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class Action {
-    private User user;
-    private FormAction formAction;
+    private String userID;
     private Date date;
+    public enum FormAction {
+        REQUESTED,
+        VIEWED,
+        DENIED,
+        ACCEPTED;
+    }
 
-    public Action(User user, FormAction formAction) {
-        this.user = user;
+    private FormAction formAction;
+
+    public Action(String userID, FormAction formAction) {
+        this.userID = userID;
         this.formAction = formAction;
         date = new Date();
         date = Calendar.getInstance().getTime();
     }
 
-    public User getUser() {
-        return user;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(String userID) {
+        this.userID = userID;
     }
 
     public FormAction getFormAction() {
@@ -46,6 +52,6 @@ public class Action {
 
     @Override
     public String toString() {
-        return user.toString() + "\n" + formAction.toString() + " the request on " + date;
+        return userID + "\n" + formAction.toString() + " the request on " + date;
     }
 }

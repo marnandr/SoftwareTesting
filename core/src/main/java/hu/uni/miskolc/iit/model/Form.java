@@ -1,6 +1,8 @@
 package hu.uni.miskolc.iit.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Form {
     private int form_id;
@@ -14,36 +16,37 @@ public class Form {
 
     private formState currentState;
     private FormTypes formType;
-    private History formHistory;
+    private List<Action> formHistory;
 
-    private String teacherID;
-    private String studentID;
-    private String courseID;
 
     public Form() {
     }
 
-    public Form(Student st, Teacher t, Course c, String txt, Date dt, FormTypes formType) {
-        student = st;
-        teacher = t;
-        course = c;
-        text = txt;
-        date = dt;
+    public Form(Student student, Teacher teacher, Course course, String text, Date date, FormTypes formType) {
+        this.teacher = teacher;
+        this.course = course;
+        this.text = text;
+        this.date = date;
         this.formType = formType;
         currentState = formState.OPEN;
         //first element in the form history, always "REQUESTED" and the student is the actor
-        formHistory = new History(st, FormAction.REQUESTED);
+        formHistory = new ArrayList<>();
+        formHistory.add(new Action(student.getNeptunCode(),Action.FormAction.REQUESTED));
     }
 
-    public Form(int id, String st, String t, String c, String txt, FormTypes formType) {
+    /*
+    public Form(int id, String studentID, String teacherID, String courseID, String text, FormTypes formType) {
         form_id = id;
-        studentID = st;
-        teacherID = t;
-        courseID = c;
-        text = txt;
+        student.setNeptunCode(studentID);
+        teacher.setNeptunCode(teacherID);
+        course.setCode(courseID);
+        this.text = text;
         this.formType = formType;
         currentState = formState.OPEN;
+        formHistory = new ArrayList<>();
+        formHistory.add(new Action(student.getNeptunCode(),Action.FormAction.REQUESTED));
     }
+*/
 
     @Override
     public String toString() {
@@ -107,36 +110,36 @@ public class Form {
         this.formType = formType;
     }
 
-    public History getHistory() {
+    public List<Action> getHistory() {
         return formHistory;
     }
 
-    public void setHistory(History formHistory) {
+    public void setHistory(List<Action> formHistory) {
         this.formHistory = formHistory;
     }
 
     public String getTeacherID() {
-        return teacherID;
+        return teacher.getNeptunCode();
     }
 
     public void setTeacherID(String teacherID) {
-        this.teacherID = teacherID;
+        this.teacher.setNeptunCode(teacherID);
     }
 
     public String getStudentID() {
-        return studentID;
+        return student.getNeptunCode();
     }
 
     public void setStudentID(String studentID) {
-        this.studentID = studentID;
+        this.student.setNeptunCode(studentID);
     }
 
     public String getCourseID() {
-        return courseID;
+        return course.getCode();
     }
 
     public void setCourseID(String courseID) {
-        courseID = courseID;
+        this.course.setCode(courseID);
     }
 
     public int getForm_id() {

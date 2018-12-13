@@ -24,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
 public class TeacherServiceImplTest {
-
+/*
     @Mock
     private TeacherServiceDao teacherServiceDaoMock;
 
@@ -76,6 +76,6 @@ public class TeacherServiceImplTest {
         doReturn(forms).when(teacherServiceDaoMock).findFormsByCourse("matek101");
         assertEquals(forms, teacherService.findFormsByCourse("matek101"));
     }
-
+*/
 
 }

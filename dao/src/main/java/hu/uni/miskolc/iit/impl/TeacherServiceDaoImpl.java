@@ -18,8 +18,6 @@ public class TeacherServiceDaoImpl implements TeacherServiceDao {
 
     public TeacherServiceDaoImpl(){
         myForms = new ArrayList<>();
-        myForms.add(new Form(1,"abc111","teacher1","matek101","please let me retake the exam", FormTypes.RETAKE_EXAM));
-        myForms.add(new Form(2,"abc112","teacher1","matek102","please let me retake the class", FormTypes.RETAKE_LECTURE));
     }
 
     @Override
@@ -81,6 +79,7 @@ public class TeacherServiceDaoImpl implements TeacherServiceDao {
 
     @Override
     public void createForm(int id, String st, String t, String c, String txt, FormTypes formType) throws FormAlreadyExistsExeption {
+        /*
         if(myForms.size()>0){
             for(Form form:myForms ){
                 if(form.getForm_id()==id){
@@ -92,7 +91,7 @@ public class TeacherServiceDaoImpl implements TeacherServiceDao {
         else{
             myForms.add(new Form(id,st,t,c,txt,formType));
         }
-
+*/
     }
 
 }

@@ -22,17 +22,17 @@ public class Form {
     public Form() {
     }
 
-    public Form(int formID, Student student, Teacher teacher, Course course, String text, Date date, FormTypes formType) {
+    public Form(int formID, Student student, Teacher teacher, Course course, String text, FormTypes formType) {
         this.formID = formID;
+        this.student = student;
         this.teacher = teacher;
         this.course = course;
         this.text = text;
-        this.date = date;
         this.formType = formType;
         currentState = formState.OPEN;
         //first element in the form history, always "REQUESTED" and the student is the actor
         formHistory = new ArrayList<>();
-        formHistory.add(new Action(student.getNeptunCode(),Action.FormAction.REQUESTED));
+        //formHistory.add(new Action(student.getNeptunCode(),Action.FormAction.REQUESTED));
     }
 
     @Override

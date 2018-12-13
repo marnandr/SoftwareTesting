@@ -19,20 +19,23 @@ public class FormDaoImpl implements FormDao {
     }
 
     @Override
-    public void createForm(int formID, Student student, Teacher teacher, Course course, String text, Date date, FormTypes formType) throws FormAlreadyExistsExeption, StudentNotFoundException, TeacherNotFoundException, CourseDoesNotExistException {
+    public void createForm(int formID, Student student, Teacher teacher, Course course, String text, FormTypes formType) throws FormAlreadyExistsExeption, StudentNotFoundException, TeacherNotFoundException, CourseDoesNotExistException {
         if(doesItExist(formID)){
             throw new FormAlreadyExistsExeption();
         }
         else{
-            forms.add(new Form(formID,student,teacher,course,text,date,formType));
+            forms.add(new Form(formID,student,teacher,course,text,formType));
         }
     }
 
     @Override
     public void forwardForm(UserDao userDao, Form form, String teacherID) throws FormNotFoundException, TeacherNotFoundException, CourseDoesNotExistException, StudentNotFoundException {
+        if(form == null ){
+           throw new FormNotFoundException();
+        }
         Form formToForward;
         try {
-            formToForward = new Form(form.getFormID(),form.getStudent(),(Teacher)userDao.findUserByID(teacherID),form.getCourse(),form.getText(),form.getDate(),form.getFormType());
+            formToForward = new Form(form.getFormID(),form.getStudent(),(Teacher)userDao.findUserByID(teacherID),form.getCourse(),form.getText(),form.getFormType());
         } catch (UserDoesNotExistException e) {
             throw new TeacherNotFoundException();
         }
@@ -61,6 +64,9 @@ public class FormDaoImpl implements FormDao {
 
     @Override
     public void modifyForm(Form form) throws FormNotFoundException, StudentNotFoundException, TeacherNotFoundException, CourseDoesNotExistException {
+        if(form==null){
+            throw new FormNotFoundException();
+        }
         boolean exists = false;
         int formToModifyIndex = -1;
         for(int i = 0; i < forms.size(); i++){
@@ -80,12 +86,13 @@ public class FormDaoImpl implements FormDao {
 
     @Override
     public List<Form> findFormsByUser(UserDao userDao, String userID) throws FormNotFoundException, UserDoesNotExistException {
+
         userDao.findUserByID(userID);
 
         boolean exists = false;
         List<Form> formsToReturn = new ArrayList<>();
         for(Form form : forms){
-            if(form.getStudentID()==userID || form.getTeacherID()==userID){
+            if(form.getTeacherID()==userID || form.getStudentID()== userID ){
                 exists = true;
                 formsToReturn.add(form);
             }
@@ -128,7 +135,13 @@ public class FormDaoImpl implements FormDao {
                 formsToReturn.add(form);
             }
         }
-        return formsToReturn;
+        if(formsToReturn.isEmpty()){
+            throw new FormNotFoundException();
+        }
+        else{
+            return formsToReturn;
+        }
+
     }
 
 

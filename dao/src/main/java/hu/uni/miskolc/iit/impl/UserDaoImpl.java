@@ -54,6 +54,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void modifyUser(User user) throws UserDoesNotExistException, IllegalArgumentException {
+        if(user == null){
+            throw new UserDoesNotExistException();
+        }
         boolean found = false;
         int userToModifyIndex = -1;
         for(int i = 0; i < users.size(); i++) {

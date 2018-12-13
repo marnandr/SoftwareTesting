@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Form {
-    private int form_id;
+    private int formID;
     private Student student;
     private Teacher teacher;
     private Course course;
@@ -22,7 +22,8 @@ public class Form {
     public Form() {
     }
 
-    public Form(Student student, Teacher teacher, Course course, String text, Date date, FormTypes formType) {
+    public Form(int formID, Student student, Teacher teacher, Course course, String text, Date date, FormTypes formType) {
+        this.formID = formID;
         this.teacher = teacher;
         this.course = course;
         this.text = text;
@@ -33,20 +34,6 @@ public class Form {
         formHistory = new ArrayList<>();
         formHistory.add(new Action(student.getNeptunCode(),Action.FormAction.REQUESTED));
     }
-
-    /*
-    public Form(int id, String studentID, String teacherID, String courseID, String text, FormTypes formType) {
-        form_id = id;
-        student.setNeptunCode(studentID);
-        teacher.setNeptunCode(teacherID);
-        course.setCode(courseID);
-        this.text = text;
-        this.formType = formType;
-        currentState = formState.OPEN;
-        formHistory = new ArrayList<>();
-        formHistory.add(new Action(student.getNeptunCode(),Action.FormAction.REQUESTED));
-    }
-*/
 
     @Override
     public String toString() {
@@ -142,12 +129,12 @@ public class Form {
         this.course.setCode(courseID);
     }
 
-    public int getForm_id() {
-        return form_id;
+    public int getFormID() {
+        return formID;
     }
 
-    public void setForm_id(int form_id) {
-        this.form_id = form_id;
+    public void setFormID(int formID) {
+        this.formID = formID;
     }
 
 

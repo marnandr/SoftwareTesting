@@ -6,12 +6,12 @@ public class Course {
     private String code;
     private String name;
     private String description;
-    private int teacherID;
+    private String teacherID;
 
     public Course() {
     }
 
-    public Course(String code, String name, String desciption, int teacherID) {
+    public Course(String code, String name, String desciption, String teacherID) {
         this.code = code;
         this.name = name;
         this.description = desciption;
@@ -42,11 +42,11 @@ public class Course {
         this.description = description;
     }
 
-    public int getTeacher() {
+    public String getTeacher() {
         return teacherID;
     }
 
-    public void setTeacher(int teacherID) {
+    public void setTeacher(String teacherID) {
         this.teacherID = teacherID;
     }
 

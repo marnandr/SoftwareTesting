@@ -13,7 +13,7 @@
 
         <prop key="forward.form">
             <![CDATA[
-                Update Form where id=:form_id
+                Update Form where id=:formID
             ]]>
         </prop>
 

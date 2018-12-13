@@ -25,7 +25,7 @@
 
         <prop key="select.requeststatus">
             <![CDATA[
-                    Select requeststatus from Student_Request where form_id = :form_id
+                    Select requeststatus from Student_Request where formID = :formID
                 ]]>
 
         </prop>

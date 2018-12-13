@@ -3,10 +3,6 @@ package hu.uni.miskolc.iit;
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
 import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
 import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
-import hu.uni.miskolc.iit.model.Course;
-import hu.uni.miskolc.iit.model.Form;
-import hu.uni.miskolc.iit.model.Request;
-import hu.uni.miskolc.iit.service.StudentService;
 import hu.uni.miskolc.iit.service.impl.StudentServiceImpl;
 import junit.framework.AssertionFailedError;
 import org.junit.Before;
@@ -14,8 +10,6 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 import static  org.junit.Assert.assertEquals;

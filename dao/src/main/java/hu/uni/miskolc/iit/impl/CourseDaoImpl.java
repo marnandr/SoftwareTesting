@@ -1,9 +1,11 @@
 package hu.uni.miskolc.iit.impl;
 
 import hu.uni.miskolc.iit.dao.CourseDao;
+import hu.uni.miskolc.iit.dao.UserDao;
 import hu.uni.miskolc.iit.exceptions.CourseAlreadyExistException;
 import hu.uni.miskolc.iit.exceptions.CourseDoesNotExistException;
 import hu.uni.miskolc.iit.exceptions.TeacherNotFoundException;
+import hu.uni.miskolc.iit.exceptions.UserDoesNotExistException;
 import hu.uni.miskolc.iit.model.Course;
 
 import java.util.ArrayList;
@@ -18,7 +20,11 @@ public class CourseDaoImpl implements CourseDao {
     }
 
     @Override
-    public void createCourse(String courseID, String name, String desciption, String teacherID) throws CourseAlreadyExistException, TeacherNotFoundException {
+    public void createCourse(UserDao userDao, String courseID, String name, String desciption, String teacherID) throws CourseAlreadyExistException, UserDoesNotExistException, IllegalArgumentException {
+        if(userDao==null || teacherID == null){
+            throw new IllegalArgumentException();
+        }
+        userDao.findUserByID(teacherID);
         boolean alreadyExists = false;
         for(Course course : courses){
             if(course.getCourseID()==courseID){
@@ -34,7 +40,11 @@ public class CourseDaoImpl implements CourseDao {
     }
 
     @Override
-    public void modifyCourse(Course course) throws CourseDoesNotExistException, TeacherNotFoundException {
+    public void modifyCourse(UserDao userDao, Course course) throws CourseDoesNotExistException, UserDoesNotExistException, IllegalArgumentException {
+        if(course==null || userDao == null){
+            throw new IllegalArgumentException();
+        }
+        userDao.findUserByID(course.getTeacherID());
         courses.set(getIndex(course.getCourseID()),course);
     }
 
@@ -68,7 +78,11 @@ public class CourseDaoImpl implements CourseDao {
     }
 
     @Override
-    public List<Course> findCoursesByTeacher(String teacherID) throws TeacherNotFoundException, CourseDoesNotExistException {
+    public List<Course> findCoursesByTeacher(UserDao userDao, String teacherID) throws CourseDoesNotExistException, UserDoesNotExistException {
+        if(userDao==null || teacherID == null){
+            throw new IllegalArgumentException();
+        }
+        userDao.findUserByID(teacherID);
         boolean exists = false;
         List<Course> coursesToReturn = new ArrayList<>();
         for(Course course : courses){

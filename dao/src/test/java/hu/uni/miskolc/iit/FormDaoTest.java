@@ -25,7 +25,6 @@ public class FormDaoTest {
     @InjectMocks
     private FormDao formDao;
 
-    private User testUser;
     private Student student1;
     private Teacher teacher1;
     private Course course1;

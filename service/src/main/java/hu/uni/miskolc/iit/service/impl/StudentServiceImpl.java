@@ -1,8 +1,11 @@
 package hu.uni.miskolc.iit.service.impl;
 
+import hu.uni.miskolc.iit.dao.CourseDao;
+import hu.uni.miskolc.iit.dao.FormDao;
 import hu.uni.miskolc.iit.dao.StudentServiceDao;
-import hu.uni.miskolc.iit.exceptions.ComplainAlreadyExistsException;
-import hu.uni.miskolc.iit.exceptions.RequestDoesNotExistException;
+import hu.uni.miskolc.iit.dao.UserDao;
+import hu.uni.miskolc.iit.exceptions.*;
+import hu.uni.miskolc.iit.model.*;
 import hu.uni.miskolc.iit.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,25 +14,33 @@ import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
 
-    @Autowired
-    StudentServiceDao studentServiceDao;
+    FormDao formDao;
+    CourseDao courseDao;
+    UserDao userDao;
 
-    /**
-     * Service layer method to get all listed courses by sending the request to the DAO layer
-     *
-     * @return
-     */
-    //@Override
-    //public List<Course> getAllCourses() {return studentServiceDao.findAllCourses();
-
-
-    @Override
-    public String checkRequestStatus(int requestid) throws RequestDoesNotExistException {
-        return studentServiceDao.checkRequestStatus(requestid);
+    public StudentServiceImpl(FormDao formDao, CourseDao courseDao, UserDao userDao){
+        this.formDao = formDao;
+        this.courseDao = courseDao;
+        this.userDao = userDao;
     }
 
     @Override
-    public void createComplain(int requestID, String complain) throws ComplainAlreadyExistsException, RequestDoesNotExistException {
-        studentServiceDao.createComplain(requestID, complain);
+    public List<Course> getAllCourses() throws CourseDoesNotExistException {
+        if(courseDao.getAllCourses().isEmpty()){
+            throw new CourseDoesNotExistException();
+        }
+        else{
+            return courseDao.getAllCourses();
+        }
+    }
+
+    @Override
+    public void createForm(int formID, Student student, Teacher teacher, Course course, String text, FormTypes formType) throws FormAlreadyExistsExeption, StudentNotFoundException, TeacherNotFoundException, CourseDoesNotExistException {
+
+    }
+
+    @Override
+    public List<Form> findThatStudentsForms() throws FormDoesNotExistException {
+        return null;
     }
 }

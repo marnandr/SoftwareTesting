@@ -6,9 +6,10 @@ import hu.uni.miskolc.iit.model.*;
 import java.util.List;
 
 public interface TeacherService {
-    List<Form> getForms() throws FormDoesNotExistException;
-    List<Course> getCourses() throws FormDoesNotExistException;
-    void forwardForm(int form_id, String teacherID) throws FormDoesNotExistException, TeacherNotFoundException;
-    List<Form> findThatTeachersForms(String teacherID) throws FormNotFoundException, TeacherNotFoundException;
+    void createForm(int formID, Student student, Teacher teacher, Course course, String text, FormTypes formType) throws FormAlreadyExistsExeption, StudentNotFoundException, TeacherNotFoundException, CourseDoesNotExistException;
+    List<Form> getForms() throws FormNotFoundException;
+    List<Course> getCourses() throws CourseDoesNotExistException;
+    void forwardForm(Form form, String teacherID) throws FormNotFoundException, TeacherNotFoundException, CourseDoesNotExistException, StudentNotFoundException;
+    List<Form> findThatTeachersForms(String teacherID) throws FormNotFoundException, TeacherNotFoundException, UserDoesNotExistException;
     List<Form> findFormsByCourse(String course_id) throws FormNotFoundException, CourseDoesNotExistException;
 }

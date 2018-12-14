@@ -144,6 +144,10 @@ public class FormDaoImpl implements FormDao {
 
     }
 
+    @Override
+    public List<Form> getForms() throws FormNotFoundException {
+        return forms;
+    }
 
     public boolean doesItExist(int formID){
         boolean alreadyExists = false;
@@ -154,5 +158,7 @@ public class FormDaoImpl implements FormDao {
         }
         return alreadyExists;
     }
+
+
 
 }

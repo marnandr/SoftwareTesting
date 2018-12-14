@@ -10,4 +10,5 @@ public interface StudentService {
     List<Course> getAllCourses() throws CourseDoesNotExistException;
     void createForm(int formID, Student student, Teacher teacher, Course course, String text, FormTypes formType) throws FormAlreadyExistsExeption, StudentNotFoundException, TeacherNotFoundException, CourseDoesNotExistException;
     List<Form> findThatStudentsForms() throws FormDoesNotExistException;
+
 }

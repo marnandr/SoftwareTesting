@@ -87,7 +87,6 @@ public class FormDaoTest {
     public void forwardFormTest() throws UserDoesNotExistException, CourseDoesNotExistException, FormNotFoundException, StudentNotFoundException, TeacherNotFoundException {
         String teacherID = "TTT111";
         doReturn(teacher1).when(userDaoMock).findUserByID(teacherID);
-
         formDao.forwardForm( userDaoMock,form1,"TTT222");
     }
 

@@ -15,5 +15,6 @@ public interface FormDao {
     List<Form> findFormsByUser(UserDao userDao, String userID) throws FormNotFoundException, UserDoesNotExistException;
     List<Form> findFormsByCourse (CourseDao courseDao, String courseID) throws FormNotFoundException, CourseDoesNotExistException;
     List<Form> findFormsByStatus (Form.formState state) throws FormNotFoundException;
+    List<Form> getForms() throws FormNotFoundException;
 
 }

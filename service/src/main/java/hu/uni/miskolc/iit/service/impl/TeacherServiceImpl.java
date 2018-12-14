@@ -1,47 +1,78 @@
 package hu.uni.miskolc.iit.service.impl;
 
-import hu.uni.miskolc.iit.dao.TeacherServiceDao;
-import hu.uni.miskolc.iit.exceptions.FormAlreadyExistsExeption;
-import hu.uni.miskolc.iit.exceptions.FormDoesNotExistException;
-import hu.uni.miskolc.iit.exceptions.FormNotFoundException;
-import hu.uni.miskolc.iit.model.Form;
-import hu.uni.miskolc.iit.model.FormTypes;
+import hu.uni.miskolc.iit.dao.CourseDao;
+import hu.uni.miskolc.iit.dao.FormDao;
+import hu.uni.miskolc.iit.dao.UserDao;
+import hu.uni.miskolc.iit.exceptions.*;
+import hu.uni.miskolc.iit.model.*;
 import hu.uni.miskolc.iit.service.TeacherService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherServiceImpl implements TeacherService {
 
-    TeacherServiceDao teacherServiceDao;
+    FormDao formDao;
+    CourseDao courseDao;
+    UserDao userDao;
 
-    public TeacherServiceImpl(TeacherServiceDao teacherServiceDao){
-        this.teacherServiceDao = teacherServiceDao;
+    public TeacherServiceImpl(FormDao formDao, CourseDao courseDao, UserDao userDao){
+        this.formDao = formDao;
+        this.courseDao = courseDao;
+        this.userDao = userDao;
+    }
+
+
+    @Override
+    public void createForm(int formID, Student student, Teacher teacher, Course course, String text, FormTypes formType) throws FormAlreadyExistsExeption, StudentNotFoundException, TeacherNotFoundException, CourseDoesNotExistException {
+        formDao.createForm(formID, student, teacher, course, text, formType);
     }
 
     @Override
-    public List<Form> getForms() {
-        return teacherServiceDao.getForms();
+    public List<Form> getForms() throws FormNotFoundException {
+        List<Form> formsToReturn = formDao.getForms();
+        if(formsToReturn.isEmpty()){
+            throw new FormNotFoundException();
+        }
+        else{
+            return formsToReturn;
+        }
     }
 
     @Override
-    public void forwardForm(int form_id, String teacherID) throws FormDoesNotExistException {
-        //teacherServiceDao.forwardForm(form_id, teacherID);
+    public List<Course> getCourses() throws CourseDoesNotExistException {
+        if(courseDao.getAllCourses().isEmpty()){
+            throw new CourseDoesNotExistException();
+        }
+        else{
+            return courseDao.getAllCourses();
+        }
     }
 
     @Override
-    public List<Form> findThatTeachersForms(String teacherID) throws FormNotFoundException {
-        return null; //teacherServiceDao.findThatTeachersForms(teacherID);
+    public void forwardForm(Form form, String teacherID) throws FormNotFoundException, TeacherNotFoundException, CourseDoesNotExistException, StudentNotFoundException {
+        formDao.forwardForm(userDao,form, teacherID);
     }
 
     @Override
-    public List<Form> findFormsByCourse(String course_id) throws FormNotFoundException {
-        return null; //teacherServiceDao.findFormsByCourse(course_id);
+    public List<Form> findThatTeachersForms(String teacherID) throws FormNotFoundException, TeacherNotFoundException, UserDoesNotExistException {
+        List<Form> formsToReturn = formDao.findFormsByUser(userDao, teacherID);
+        if(formsToReturn.isEmpty()){
+            throw new FormNotFoundException();
+        }
+        else{
+            return formsToReturn;
+        }
     }
 
     @Override
-    public void createForm(int id, String st, String t, String c, String txt, FormTypes formType) throws FormAlreadyExistsExeption {
-        //teacherServiceDao.createForm(id,st,t,c,txt,formType);
+    public List<Form> findFormsByCourse(String course_id) throws FormNotFoundException, CourseDoesNotExistException {
+        List<Form> formsToReturn = formDao.findFormsByCourse(courseDao, course_id);
+        if(formsToReturn.isEmpty()){
+            throw new FormNotFoundException();
+        }
+        else{
+            return formsToReturn;
+        }
     }
-
-
 }

@@ -1,8 +1,11 @@
 package hu.uni.miskolc.iit;
 
 
+import org.junit.Ignore;
+
 import static org.junit.Assert.assertTrue;
 
+@Ignore
 public class AdministratorServiceImplTest {
 /*
     private AdministratorService adminService = new AdministratorServiceImpl();
